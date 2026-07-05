@@ -1,0 +1,29 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# VS Code
+.vscode/
+
+# NetBeans
+nbproject/private/
+
+# Java compiled files
+bin/
+build/
+dist/
+target/
+*.class
+
+# Logs
+*.log
+
+# Database credentials / local config
+.env
+config/db.properties
