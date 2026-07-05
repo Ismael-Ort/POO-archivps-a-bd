@@ -53,7 +53,7 @@ public class selecVacunas extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 
-		// ========== TÍTULO PRINCIPAL ==========
+		// ========== TITULO PRINCIPAL ==========
 		JLabel lblTitulo = new JLabel("Registro de Vacunas Aplicadas Previamente");
 		lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblTitulo.setBounds(15, 10, 500, 25);

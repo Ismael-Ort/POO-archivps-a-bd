@@ -94,15 +94,15 @@ public class HistoriaClinica implements Serializable {
 		StringBuilder resumen = new StringBuilder();
 
 		resumen.append("===============================================================\n");
-		resumen.append("                   RESUMEN DE HISTORIA CLÕNICA                 \n");
+		resumen.append("                   RESUMEN DE HISTORIA CL√çNICA                 \n");
 		resumen.append("===============================================================\n\n");
 
-		// INFORMACI”N DEL PACIENTE
-		resumen.append("INFORMACI”N DEL PACIENTE\n");
+		// INFORMACI√ìN DEL PACIENTE
+		resumen.append("INFORMACI√ìN DEL PACIENTE\n");
 		resumen.append("---------------------------------------------------------------\n");
 		resumen.append("Nombre: ").append(paciente.getNombre()).append(" ").append(paciente.getApellido()).append("\n");
-		resumen.append("CÈdula: ").append(paciente.getCedula()).append("\n");
-		resumen.append("CÛdigo: ").append(paciente.getCodigoPaciente()).append("\n");
+		resumen.append("C√©dula: ").append(paciente.getCedula()).append("\n");
+		resumen.append("C√≥digo: ").append(paciente.getCodigoPaciente()).append("\n");
 		resumen.append("Tipo de Sangre: ").append(paciente.getTipoSangre()).append("\n");
 		resumen.append("Fecha de Registro: ").append(fechaCreacion).append("\n");
 
@@ -126,7 +126,7 @@ public class HistoriaClinica implements Serializable {
 		// CONSULTAS EN RESUMEN
 		ArrayList<Consulta> consultasResumen = obtenerConsultasParaResumen();
 
-		resumen.append("RESUMEN DE CONSULTAS M…DICAS\n");
+		resumen.append("RESUMEN DE CONSULTAS M√âDICAS\n");
 		resumen.append("---------------------------------------------------------------\n");
 
 		if (consultasResumen.isEmpty()) {
@@ -142,7 +142,7 @@ public class HistoriaClinica implements Serializable {
 				resumen.append("   Sintomas: ").append(acortarTexto(c.getSintomas(), 60)).append("\n");
 				resumen.append("   Diagnostico: ").append(acortarTexto(c.getDiagnostico(), 60)).append("\n");
 
-				// InformaciÛn del tratamiento
+				// Informaci√≥n del tratamiento
 				if (c.getTratamiento() != null) {
 					resumen.append("   Tratamiento: ").append(c.getTratamiento().getNombreTratamiento()).append("\n");
 					resumen.append("   Duracion: ").append(c.getTratamiento().getDuracion()).append("\n");
@@ -159,7 +159,7 @@ public class HistoriaClinica implements Serializable {
 			}
 		}
 
-		// ESTADÕSTICAS
+		// ESTAD√çSTICAS
 		resumen.append("ESTADISTICAS\n");
 		resumen.append("---------------------------------------------------------------\n");
 		resumen.append("Total de consultas en sistema: ").append(consultas.size()).append("\n");
@@ -168,7 +168,7 @@ public class HistoriaClinica implements Serializable {
 				.append("\n");
 		resumen.append("Consultas marcadas manualmente: ").append(contarConsultasMarcadasManual()).append("\n\n");
 
-		resumen.append("INFORMACI”N DEL REPORTE\n");
+		resumen.append("INFORMACI√ìN DEL REPORTE\n");
 		resumen.append("---------------------------------------------------------------\n");
 		resumen.append("Fecha de generacion: ").append(LocalDate.now()).append("\n");
 		resumen.append("Generado automaticamente por el sistema\n");
@@ -178,7 +178,7 @@ public class HistoriaClinica implements Serializable {
 		return resumen.toString();
 	}
 
-	// MÈtodo auxiliar para contar consultas marcadas manualmente
+	// M√©todo auxiliar para contar consultas marcadas manualmente
 	private int contarConsultasMarcadasManual() {
 		int count = 0;
 		for (Consulta c : consultas) {
@@ -189,7 +189,7 @@ public class HistoriaClinica implements Serializable {
 		return count;
 	}
 
-	// MÈtodo auxiliar para acortar texto largo
+	// M√©todo auxiliar para acortar texto largo
 	private String acortarTexto(String texto, int maxLength) {
 		if (texto == null)
 			return "No especificado";

@@ -25,16 +25,16 @@ public class GraficaEnfermedadesDiagnosticas extends JFrame {
 
     public GraficaEnfermedadesDiagnosticas() {
 
-        setTitle("Enfermedades Más Diagnosticadas");
+        setTitle("Enfermedades MÃ¡s Diagnosticadas");
         setSize(800, 600);
         setLayout(new BorderLayout());
 
         DefaultCategoryDataset dataset = cargarDatos();
 
         chart = ChartFactory.createBarChart(
-                "Enfermedades Más Diagnosticadas",
+                "Enfermedades MÃ¡s Diagnosticadas",
                 "Enfermedad",
-                "Cantidad de Diagnósticos",
+                "Cantidad de DiagnÃ³sticos",
                 dataset,
                 PlotOrientation.VERTICAL,
                 false,
@@ -69,7 +69,7 @@ public class GraficaEnfermedadesDiagnosticas extends JFrame {
         DefaultCategoryDataset ds = new DefaultCategoryDataset();
 
         for (String e : cont.keySet()) {
-            ds.addValue(cont.get(e), "Diagnósticos", e);
+            ds.addValue(cont.get(e), "DiagnÃ³sticos", e);
         }
 
         return ds;

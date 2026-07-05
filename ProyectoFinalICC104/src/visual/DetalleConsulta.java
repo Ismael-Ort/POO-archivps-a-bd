@@ -43,7 +43,7 @@ public class DetalleConsulta extends JDialog {
 	private String numeroLicenciaDoctor = null;
 
 	public DetalleConsulta(Consulta consulta) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(DetalleConsulta.class.getResource("/javax/swing/plaf/metal/icons/ocean/file.gif")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(DetalleConsulta.class.getResource("/recursos/doc.jpg")));
 		this.consultaActual = consulta;
 		// verificarPermisos();
 		initialize();
@@ -51,12 +51,12 @@ public class DetalleConsulta extends JDialog {
 	}
 
 	/*
-	 * private void verificarPermisos() { // AquÌ integrar·s con tu sistema de login
-	 * m·s adelante // Por ahora, simulamos permisos if (Control.getLoginUser() !=
+	 * private void verificarPermisos() { // Aqu√≠ integrar√°s con tu sistema de login
+	 * m√°s adelante // Por ahora, simulamos permisos if (Control.getLoginUser() !=
 	 * null) { String tipoUsuario = Control.getLoginUser().getTipo(); if
-	 * ("Doctor".equalsIgnoreCase(tipoUsuario)) { esDoctor = true; // Obtener n˙mero
+	 * ("Doctor".equalsIgnoreCase(tipoUsuario)) { esDoctor = true; // Obtener n√∫mero
 	 * de licencia del doctor logueado // numeroLicenciaDoctor = ... (se
-	 * implementar· con el login) } } }
+	 * implementar√° con el login) } } }
 	 * 
 	 */
 
@@ -74,17 +74,17 @@ public class DetalleConsulta extends JDialog {
 		Font labelFont = new Font("Tahoma", Font.BOLD, 12);
 		Font valueFont = new Font("Tahoma", Font.PLAIN, 12);
 
-		// ========== INFORMACI”N B¡SICA ==========
+		// ========== INFORMACI√ìN B√ÅSICA ==========
 		JPanel panelBasico = new JPanel();
 		panelBasico.setBackground(new Color(250, 240, 230));
 		panelBasico.setBorder(
-				new TitledBorder(null, "InformaciÛn B·sica", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				new TitledBorder(null, "Informaci√≥n B√°sica", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panelBasico.setBounds(10, 10, 864, 150);
 		panelBasico.setLayout(null);
 		contentPanel.add(panelBasico);
 
-		// Fila 1: CÛdigo y Fecha
-		JLabel lblCodigo = new JLabel("CÛdigo Consulta:");
+		// Fila 1: C√≥digo y Fecha
+		JLabel lblCodigo = new JLabel("C√≥digo Consulta:");
 		lblCodigo.setFont(labelFont);
 		lblCodigo.setBounds(10, 25, 120, 20);
 		panelBasico.add(lblCodigo);
@@ -146,8 +146,8 @@ public class DetalleConsulta extends JDialog {
 		panelBasico.add(txtEspecialidad);
 		txtEspecialidad.setColumns(10);
 
-		// Fila 4: InformaciÛn de Resumen
-		JLabel lblInfoResumen = new JLabel("InformaciÛn de Resumen:");
+		// Fila 4: Informaci√≥n de Resumen
+		JLabel lblInfoResumen = new JLabel("Informaci√≥n de Resumen:");
 		lblInfoResumen.setFont(labelFont);
 		lblInfoResumen.setBounds(10, 115, 180, 20);
 		panelBasico.add(lblInfoResumen);
@@ -166,11 +166,11 @@ public class DetalleConsulta extends JDialog {
 		chkEnfermedadVigilada.setBounds(360, 115, 150, 20);
 		panelBasico.add(chkEnfermedadVigilada);
 
-		// ========== SÕNTOMAS ==========
+		// ========== S√çNTOMAS ==========
 		JPanel panelSintomas = new JPanel();
 		panelSintomas.setBackground(new Color(250, 240, 230));
 		panelSintomas.setBorder(
-				new TitledBorder(null, "SÌntomas Reportados", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				new TitledBorder(null, "S√≠ntomas Reportados", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panelSintomas.setBounds(10, 170, 864, 100);
 		panelSintomas.setLayout(new BorderLayout(0, 0));
 		contentPanel.add(panelSintomas);
@@ -183,11 +183,11 @@ public class DetalleConsulta extends JDialog {
 		JScrollPane scrollSintomas = new JScrollPane(txtSintomas);
 		panelSintomas.add(scrollSintomas, BorderLayout.CENTER);
 
-		// ========== DIAGN”STICO ==========
+		// ========== DIAGN√ìSTICO ==========
 		JPanel panelDiagnostico = new JPanel();
 		panelDiagnostico.setBackground(new Color(250, 240, 230));
 		panelDiagnostico
-				.setBorder(new TitledBorder(null, "DiagnÛstico", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				.setBorder(new TitledBorder(null, "Diagn√≥stico", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panelDiagnostico.setBounds(10, 280, 864, 100);
 		panelDiagnostico.setLayout(new BorderLayout(0, 0));
 		contentPanel.add(panelDiagnostico);
@@ -217,10 +217,10 @@ public class DetalleConsulta extends JDialog {
 		JScrollPane scrollTratamiento = new JScrollPane(txtTratamiento);
 		panelTratamiento.add(scrollTratamiento, BorderLayout.CENTER);
 
-		// ========== NOTAS M…DICAS ==========
+		// ========== NOTAS M√âDICAS ==========
 		JPanel panelNotas = new JPanel();
 		panelNotas.setBackground(new Color(250, 240, 230));
-		panelNotas.setBorder(new TitledBorder(null, "Notas MÈdicas Adicionales", TitledBorder.LEADING, TitledBorder.TOP,
+		panelNotas.setBorder(new TitledBorder(null, "Notas M√©dicas Adicionales", TitledBorder.LEADING, TitledBorder.TOP,
 				null, null));
 		panelNotas.setBounds(10, 600, 864, 100);
 		panelNotas.setLayout(new BorderLayout(0, 0));
@@ -240,7 +240,7 @@ public class DetalleConsulta extends JDialog {
 		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		getContentPane().add(buttonPane, BorderLayout.SOUTH);
 
-		// BotÛn para marcar/desmarcar resumen (solo para doctores)
+		// Bot√≥n para marcar/desmarcar resumen (solo para doctores)
 		JButton btnGestionResumen = new JButton("Gestionar Resumen");
 		btnGestionResumen.setVisible(esDoctor); // Solo visible para doctores
 		btnGestionResumen.addActionListener(e -> gestionarResumen());
@@ -256,7 +256,7 @@ public class DetalleConsulta extends JDialog {
 		if (consultaActual == null)
 			return;
 
-		// InformaciÛn b·sica
+		// Informaci√≥n b√°sica
 		txtCodigo.setText(consultaActual.getCodigoConsulta());
 		txtFecha.setText(consultaActual.getFechaConsulta().toString());
 		txtPaciente.setText(consultaActual.getPaciente().getNombre() + " " + consultaActual.getPaciente().getApellido()
@@ -264,18 +264,18 @@ public class DetalleConsulta extends JDialog {
 		txtDoctor.setText(consultaActual.getDoctor().getNombre() + " " + consultaActual.getDoctor().getApellido());
 		txtEspecialidad.setText(consultaActual.getDoctor().getEspecialidad());
 
-		// SÌntomas y diagnÛstico
+		// S√≠ntomas y diagn√≥stico
 		txtSintomas.setText(
-				consultaActual.getSintomas() != null ? consultaActual.getSintomas() : "No se registraron sÌntomas");
+				consultaActual.getSintomas() != null ? consultaActual.getSintomas() : "No se registraron s√≠ntomas");
 		txtDiagnostico.setText(consultaActual.getDiagnostico() != null ? consultaActual.getDiagnostico()
-				: "No se registrÛ diagnÛstico");
+				: "No se registr√≥ diagn√≥stico");
 
 		// Tratamiento
 		txtTratamiento.setText(formatearTratamiento(consultaActual.getTratamiento()));
 
-		// InformaciÛn adicional
+		// Informaci√≥n adicional
 		txtNotas.setText(consultaActual.getNotasMedicas() != null ? consultaActual.getNotasMedicas()
-				: "No hay notas mÈdicas adicionales");
+				: "No hay notas m√©dicas adicionales");
 
 		chkIncluidaResumen.setSelected(consultaActual.isIncluidaEnResumen());
 		chkEnfermedadVigilada.setSelected(consultaActual.isEsEnfermedadVigilancia());
@@ -283,19 +283,19 @@ public class DetalleConsulta extends JDialog {
 
 	private String formatearTratamiento(Tratamiento tratamiento) {
 		if (tratamiento == null) {
-			return "No se especificÛ tratamiento para esta consulta.";
+			return "No se especific√≥ tratamiento para esta consulta.";
 		}
 
 		StringBuilder sb = new StringBuilder();
 
-		// InformaciÛn b·sica del tratamiento
-		sb.append(" INFORMACI”N DEL TRATAMIENTO\n");
-		sb.append("  CÛdigo: ").append(tratamiento.getCodigoTratamiento()).append("\n");
+		// Informaci√≥n b√°sica del tratamiento
+		sb.append(" INFORMACI√ìN DEL TRATAMIENTO\n");
+		sb.append("  C√≥digo: ").append(tratamiento.getCodigoTratamiento()).append("\n");
 		sb.append("  Nombre: ").append(tratamiento.getNombreTratamiento()).append("\n");
-		sb.append("  DuraciÛn: ").append(tratamiento.getDuracion()).append("\n");
+		sb.append("  Duraci√≥n: ").append(tratamiento.getDuracion()).append("\n");
 
 		if (tratamiento.getDescripcion() != null && !tratamiento.getDescripcion().isEmpty()) {
-			sb.append("  DescripciÛn: ").append(tratamiento.getDescripcion()).append("\n");
+			sb.append("  Descripci√≥n: ").append(tratamiento.getDescripcion()).append("\n");
 		}
 
 		if (tratamiento.getIndicaciones() != null && !tratamiento.getIndicaciones().isEmpty()) {
@@ -313,8 +313,8 @@ public class DetalleConsulta extends JDialog {
 				sb.append("  ").append(i + 1).append(". ").append(m.getNombre()).append("\n");
 				sb.append("     Dosis: ").append(m.getDosisMg()).append(" mg\n");
 				sb.append("     Frecuencia: Cada ").append(m.getFrecuenciaHoras()).append(" horas\n");
-				sb.append("     DuraciÛn: ").append(m.getDuracionDias()).append(" dÌas\n");
-				sb.append("     VÌa: ").append(m.getVia()).append("\n");
+				sb.append("     Duraci√≥n: ").append(m.getDuracionDias()).append(" d√≠as\n");
+				sb.append("     V√≠a: ").append(m.getVia()).append("\n");
 
 				if (m.getIndicaciones() != null && !m.getIndicaciones().isEmpty()) {
 					sb.append("     Indicaciones: ").append(m.getIndicaciones()).append("\n");
@@ -337,7 +337,7 @@ public class DetalleConsulta extends JDialog {
 
 		if (nuevoEstado) {
 			if (Clinica.getInstance().marcarConsultaParaResumen(consultaActual.getCodigoConsulta())) {
-				JOptionPane.showMessageDialog(this, "Consulta marcada para resumen", "…xito",
+				JOptionPane.showMessageDialog(this, "Consulta marcada para resumen", "√âxito",
 						JOptionPane.INFORMATION_MESSAGE);
 				chkIncluidaResumen.setSelected(true);
 				consultaActual.marcarParaResumen();
@@ -346,7 +346,7 @@ public class DetalleConsulta extends JDialog {
 			}
 		} else {
 			if (Clinica.getInstance().desmarcarConsultaDeResumen(consultaActual.getCodigoConsulta())) {
-				JOptionPane.showMessageDialog(this, "Consulta desmarcada del resumen", "…xito",
+				JOptionPane.showMessageDialog(this, "Consulta desmarcada del resumen", "√âxito",
 						JOptionPane.INFORMATION_MESSAGE);
 				chkIncluidaResumen.setSelected(false);
 				consultaActual.desmarcarParaResumen();

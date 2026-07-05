@@ -17,7 +17,7 @@ public class listPacientes extends JDialog {
 
 	public listPacientes() {
 		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(listPacientes.class.getResource("/com/sun/java/swing/plaf/windows/icons/DetailsView.gif")));
+				.getImage(listPacientes.class.getResource("/recursos/pac.jpg")));
 
 		setTitle("Lista de Pacientes - " + (Control.esAdministrador() ? "TODOS" : "MIS PACIENTES"));
 
@@ -31,7 +31,7 @@ public class listPacientes extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));
 
-		// ===== PANEL INFORMACIÓN =====
+		// ===== PANEL INFORMACIÃ“N =====
 		JPanel panelInfo = new JPanel();
 		panelInfo.setBackground(new Color(255, 250, 205));
 		panelInfo.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -51,7 +51,7 @@ public class listPacientes extends JDialog {
 		panelInfo.add(lblInfo);
 
 		// ===== TABLA =====
-		String[] columnas = { "Código", "Cédula", "Nombre", "Apellido", "Teléfono", "Tipo Sangre", "Estado",
+		String[] columnas = { "CÃ³digo", "CÃ©dula", "Nombre", "Apellido", "TelÃ©fono", "Tipo Sangre", "Estado",
 				"Registrado por" };
 
 		modelo = new DefaultTableModel(columnas, 0) {
@@ -106,12 +106,12 @@ public class listPacientes extends JDialog {
 	private void cargarPacientes() {
 		modelo.setRowCount(0);
 
-		// Obtener pacientes visibles según permisos
+		// Obtener pacientes visibles segÃºn permisos
 		ArrayList<Paciente> pacientesVisibles = obtenerPacientesVisibles();
 
 		if (pacientesVisibles == null || pacientesVisibles.isEmpty()) {
 			String mensaje = Control.esAdministrador() ? "No hay pacientes registrados en el sistema"
-					: "No ha registrado pacientes aún";
+					: "No ha registrado pacientes aÃºn";
 
 			modelo.addRow(new Object[] { "", mensaje, "", "", "", "", "", "" });
 			return;
@@ -136,16 +136,16 @@ public class listPacientes extends JDialog {
 			// ADMIN ve TODOS los pacientes
 			resultado.addAll(clinica.getPacientes());
 		} else if (Control.esDoctor()) {
-			// DOCTOR ve pacientes que ÉL registró (no importa si los atendió o no)
+			// DOCTOR ve pacientes que Ã‰L registrÃ³ (no importa si los atendiÃ³ o no)
 			String licenciaDoctorLogeado = Control.getLicenciaDoctorLogeado();
 
 			if (licenciaDoctorLogeado == null || licenciaDoctorLogeado.isEmpty()) {
 				JOptionPane.showMessageDialog(this, "Error: No se pudo identificar al doctor logeado",
-						"Error de sesión", JOptionPane.ERROR_MESSAGE);
+						"Error de sesiÃ³n", JOptionPane.ERROR_MESSAGE);
 				return resultado;
 			}
 
-			// CORRECCIÓN: Buscar por doctor registrador en el paciente
+			// CORRECCIÃ“N: Buscar por doctor registrador en el paciente
 			for (Paciente paciente : clinica.getPacientes()) {
 				String doctorRegistrador = paciente.getDoctorRegistrador();
 
@@ -230,12 +230,12 @@ public class listPacientes extends JDialog {
 		if (!puedeModificarSeleccion()) {
 			JOptionPane.showMessageDialog(this,
 					"No tiene permisos para modificar este paciente.\n"
-							+ "Solo puede modificar pacientes que usted registró.",
+							+ "Solo puede modificar pacientes que usted registrÃ³.",
 					"Acceso denegado", JOptionPane.WARNING_MESSAGE);
 			return;
 		}
 
-		// Abrir ventana de modificación
+		// Abrir ventana de modificaciÃ³n
 		regPaciente dialog = new regPaciente(paciente);
 		dialog.setModal(true);
 		dialog.setVisible(true);
@@ -259,7 +259,7 @@ public class listPacientes extends JDialog {
 			return;
 		}
 
-		// Abrir historial (con filtros de consultas según permisos)
+		// Abrir historial (con filtros de consultas segÃºn permisos)
 		VerHistorialClinico dialog = new VerHistorialClinico();
 		dialog.setModal(true);
 		dialog.setLocationRelativeTo(this);

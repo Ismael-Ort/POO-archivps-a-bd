@@ -23,14 +23,14 @@ public class GraficaAlergiasComunes extends JFrame {
 
     public GraficaAlergiasComunes() {
 
-        setTitle("Alergias Más Comunes");
+        setTitle("Alergias MÃ¡s Comunes");
         setSize(800, 600);
         setLayout(new BorderLayout());
 
         DefaultCategoryDataset ds = cargarDatos();
 
         chart = ChartFactory.createBarChart(
-                "Alergias Más Comunes",
+                "Alergias MÃ¡s Comunes",
                 "Alergia",
                 "Cantidad de Pacientes",
                 ds,

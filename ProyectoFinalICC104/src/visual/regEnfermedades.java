@@ -40,7 +40,7 @@ public class regEnfermedades extends JDialog {
 	 * Constructor principal para registrar una nueva enfermedad.
 	 * Recibe: nada.
 	 * Hace: configura la ventana, inicializa todos los componentes visuales,
-	 *       define los combos, botones y carga el cÛdigo autom·tico ENF-X.
+	 *       define los combos, botones y carga el c√≥digo autom√°tico ENF-X.
 	 * Devuelve: nada (constructor).
 	 */
 	public regEnfermedades() {
@@ -58,8 +58,8 @@ public class regEnfermedades extends JDialog {
 
 		Font labelFont = new Font("Tahoma", Font.PLAIN, 12);
 
-		// C√≥digo
-		JLabel lblCodigo = new JLabel("CÛdigo:");
+		// C√É¬≥digo
+		JLabel lblCodigo = new JLabel("C√≥digo:");
 		lblCodigo.setFont(labelFont);
 		lblCodigo.setBounds(20, 20, 80, 22);
 		contentPanel.add(lblCodigo);
@@ -87,7 +87,7 @@ public class regEnfermedades extends JDialog {
 		chkBajoVigilancia.setBounds(120, 85, 250, 22);
 		contentPanel.add(chkBajoVigilancia);
 
-		// S√≠ntomas y signos
+		// S√É¬≠ntomas y signos
 		JLabel lblSintomas = new JLabel("Sintomas y signos:");
 		lblSintomas.setFont(labelFont);
 		lblSintomas.setBounds(20, 120, 120, 22);
@@ -110,7 +110,7 @@ public class regEnfermedades extends JDialog {
 		spnNivelGravedad.setBounds(190, 245, 60, 22);
 		contentPanel.add(spnNivelGravedad);
 
-		// Potencial de propagaci√≥n
+		// Potencial de propagaci√É¬≥n
 		JLabel lblPotencial = new JLabel("Potencial de propagacion:");
 		lblPotencial.setFont(labelFont);
 		lblPotencial.setBounds(20, 280, 160, 22);
@@ -186,10 +186,10 @@ public class regEnfermedades extends JDialog {
 	 * de vigilancia.
 	 * Recibe: 
 	 *   - Enfermedad enfermedad: la enfermedad que se desea modificar.
-	 *   - boolean soloCambiarVigilancia: indica si solo se editar· el checkbox de vigilancia.
+	 *   - boolean soloCambiarVigilancia: indica si solo se editar√° el checkbox de vigilancia.
 	 * Hace:
 	 *   - Carga todos los datos existentes de la enfermedad en los campos.
-	 *   - Si soloCambiarVigilancia es true, deshabilita los dem·s campos y solo permite
+	 *   - Si soloCambiarVigilancia es true, deshabilita los dem√°s campos y solo permite
 	 *     modificar la vigilancia. 
 	 * Devuelve: nada (constructor).
 	 */
@@ -224,9 +224,9 @@ public class regEnfermedades extends JDialog {
 	}
 
 	/**
-	 * Genera y muestra un nuevo cÛdigo autom·tico para una enfermedad.
+	 * Genera y muestra un nuevo c√≥digo autom√°tico para una enfermedad.
 	 * Recibe: nada.
-	 * Hace: toma el contador global de enfermedades de Clinica y arma el cÛdigo ENF-XXX.
+	 * Hace: toma el contador global de enfermedades de Clinica y arma el c√≥digo ENF-XXX.
 	 * Devuelve: nada.
 	 */
 	private void inicializarCodigo() {
@@ -235,16 +235,16 @@ public class regEnfermedades extends JDialog {
 	}
 
 	/**
-	 * Guarda o actualiza la informaciÛn de una enfermedad.
+	 * Guarda o actualiza la informaci√≥n de una enfermedad.
 	 * Recibe: nada.
 	 * Hace: 
-	 *   - Si se est· editando solo la vigilancia, actualiza ˙nicamente ese atributo.
-	 *   - Si es un registro nuevo o una ediciÛn completa:
-	 *       * Valida que nombre, sÌntomas y tipo estÈn completos.
+	 *   - Si se est√° editando solo la vigilancia, actualiza √∫nicamente ese atributo.
+	 *   - Si es un registro nuevo o una edici√≥n completa:
+	 *       * Valida que nombre, s√≠ntomas y tipo est√©n completos.
 	 *       * Toma todos los valores del formulario.
 	 *       * Crea un objeto Enfermedad.
 	 *       * Llama a Clinica.registrarEnfermedad() para guardarla.
-	 *       * Limpia los campos y genera un nuevo cÛdigo si el registro fue exitoso.
+	 *       * Limpia los campos y genera un nuevo c√≥digo si el registro fue exitoso.
 	 * Devuelve: nada.
 	 */
 	private void guardarEnfermedad() {

@@ -55,10 +55,10 @@ public class listVacuna extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));
 
-		// ========== PANEL DE BÚSQUEDA ==========
+		// ========== PANEL DE BÃšSQUEDA ==========
 		JPanel panelBusqueda = new JPanel();
 		panelBusqueda.setBackground(new Color(224, 255, 255));
-		panelBusqueda.setBorder(new TitledBorder(null, "Búsqueda", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panelBusqueda.setBorder(new TitledBorder(null, "BÃºsqueda", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		contentPanel.add(panelBusqueda, BorderLayout.NORTH);
 		panelBusqueda.setLayout(new FlowLayout(FlowLayout.LEFT));
 
@@ -69,7 +69,7 @@ public class listVacuna extends JDialog {
 		txtBuscar.setColumns(30);
 		panelBusqueda.add(txtBuscar);
 
-		// Búsqueda en tiempo real
+		// BÃºsqueda en tiempo real
 		txtBuscar.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
@@ -115,7 +115,7 @@ public class listVacuna extends JDialog {
 					};
 					table = new JTable();
 					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-					String[] headers = { "Código", "Lote", "Nombre", "Cantidad", "Enfermedad", "Laboratorio" };
+					String[] headers = { "CÃ³digo", "Lote", "Nombre", "Cantidad", "Enfermedad", "Laboratorio" };
 					model.setColumnIdentifiers(headers);
 					table.setModel(model);
 					scrollPane.setViewportView(table);
@@ -128,7 +128,7 @@ public class listVacuna extends JDialog {
 					table.getColumnModel().getColumn(4).setPreferredWidth(87);
 					table.getColumnModel().getColumn(5).setPreferredWidth(87);
 
-					// Listener para selección
+					// Listener para selecciÃ³n
 					table.getSelectionModel().addListSelectionListener(e -> {
 						if (!e.getValueIsAdjusting() && table.getSelectedRow() != -1) {
 							int index = table.getSelectedRow();
@@ -166,7 +166,7 @@ public class listVacuna extends JDialog {
 	}
 
 	// ============================================================
-	// REEMPLAZAR el método cargarVacunas() en listVacuna.java
+	// REEMPLAZAR el mÃ©todo cargarVacunas() en listVacuna.java
 	// ============================================================
 
 	public static void cargarVacunas() {
@@ -204,7 +204,7 @@ public class listVacuna extends JDialog {
 		}
 	}
 
-	// ========== MÉTODO PARA BUSCAR DOCTORES ==========
+	// ========== MÃ‰TODO PARA BUSCAR DOCTORES ==========
 	private void buscarVacunas(String criterio) {
 		model.setRowCount(0);
 		row = new Object[model.getColumnCount()];
@@ -234,7 +234,7 @@ public class listVacuna extends JDialog {
 		}
 
 		if (model.getRowCount() == 0) {
-			JOptionPane.showMessageDialog(this, "No se encontraron pacientes con ese criterio de búsqueda",
+			JOptionPane.showMessageDialog(this, "No se encontraron pacientes con ese criterio de bÃºsqueda",
 					"Sin resultados", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}

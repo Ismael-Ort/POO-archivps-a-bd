@@ -43,4 +43,3 @@ public class User implements Serializable {
 		this.pass = pass;
 	}
 }
-///

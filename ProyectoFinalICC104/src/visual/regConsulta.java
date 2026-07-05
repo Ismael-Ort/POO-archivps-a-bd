@@ -39,7 +39,7 @@ public class regConsulta extends JDialog {
 	public regConsulta() {
 		super((Frame) null, "Registrar consulta", true);
 		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(regConsulta.class.getResource("/javax/swing/plaf/metal/icons/ocean/file.gif")));
+				.getImage(regConsulta.class.getResource("/recursos/doc.jpg")));
 		inicializar();
 	}
 
@@ -389,7 +389,7 @@ public class regConsulta extends JDialog {
 	}
 
 	/**
-	 * Permite registrar un paciente que vino como “interesado” en una cita.
+	 * Permite registrar un paciente que vino como "interesado" en una cita.
 	 * Recibe: nada.
 	 * Hace: abre la ventana regPaciente con los datos precargados, registra el paciente
 	 *       real en la clínica y actualiza la cita para que use esta nueva instancia.

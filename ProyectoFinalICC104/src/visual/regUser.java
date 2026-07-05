@@ -49,7 +49,7 @@ public class regUser extends JDialog {
 		contentPanel.setLayout(null);
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 
-		// ===== SECCIÓN DATOS DEL USUARIO =====
+		// ===== SECCIÃ“N DATOS DEL USUARIO =====
 		JPanel panelDatos = new JPanel();
 		panelDatos.setBackground(new Color(240, 255, 255));
 		panelDatos.setBorder(new TitledBorder(null, "Datos del Usuario", TitledBorder.LEADING, TitledBorder.TOP,
@@ -69,8 +69,8 @@ public class regUser extends JDialog {
 		txtUserName.setBounds(30, 65, 200, 30);
 		panelDatos.add(txtUserName);
 
-		// Contraseña
-		JLabel lblPass = new JLabel("Contraseña:");
+		// ContraseÃ±a
+		JLabel lblPass = new JLabel("ContraseÃ±a:");
 		lblPass.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblPass.setBounds(270, 35, 160, 25);
 		panelDatos.add(lblPass);
@@ -80,7 +80,7 @@ public class regUser extends JDialog {
 		txtPass.setBounds(270, 65, 200, 30);
 		panelDatos.add(txtPass);
 
-		// ===== SECCIÓN TIPO DE USUARIO =====
+		// ===== SECCIÃ“N TIPO DE USUARIO =====
 		JPanel panelTipo = new JPanel();
 		panelTipo.setBackground(new Color(240, 255, 255));
 		panelTipo.setBorder(new TitledBorder(null, "Tipo de Usuario", TitledBorder.LEADING, TitledBorder.TOP,
@@ -95,10 +95,10 @@ public class regUser extends JDialog {
 		lblAdmin.setBounds(40, 35, 180, 30);
 		panelTipo.add(lblAdmin);
 
-		// ===== SECCIÓN INFORMACIÓN =====
+		// ===== SECCIÃ“N INFORMACIÃ“N =====
 		JPanel panelInfo = new JPanel();
 		panelInfo.setBackground(new Color(240, 255, 255));
-		panelInfo.setBorder(new TitledBorder(null, "Información", TitledBorder.LEADING, TitledBorder.TOP,
+		panelInfo.setBorder(new TitledBorder(null, "InformaciÃ³n", TitledBorder.LEADING, TitledBorder.TOP,
 				new Font("Tahoma", Font.BOLD, 13), new Color(0, 0, 0)));
 		panelInfo.setBounds(270, 180, 240, 90);
 		panelInfo.setLayout(null);
@@ -109,7 +109,7 @@ public class regUser extends JDialog {
 		lblInfo1.setBounds(20, 25, 200, 20);
 		panelInfo.add(lblInfo1);
 
-		JLabel lblInfo2 = new JLabel("diríjase al menú:");
+		JLabel lblInfo2 = new JLabel("dirÃ­jase al menÃº:");
 		lblInfo2.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblInfo2.setBounds(20, 45, 200, 20);
 		panelInfo.add(lblInfo2);
@@ -156,7 +156,7 @@ public class regUser extends JDialog {
 		String user = txtUserName.getText().trim();
 		String pass = new String(txtPass.getPassword()).trim();
 
-		// Validar campos vacíos
+		// Validar campos vacÃ­os
 		if (user.isEmpty() || pass.isEmpty()) {
 			JOptionPane.showMessageDialog(this, "Complete todos los campos.", "Datos incompletos",
 					JOptionPane.WARNING_MESSAGE);
@@ -166,16 +166,16 @@ public class regUser extends JDialog {
 		// Validar si el usuario ya existe
 		if (Control.getInstance().existeUsuario(user)) {
 			JOptionPane.showMessageDialog(this,
-					"El nombre de usuario '" + user + "' ya está en uso.\n"
+					"El nombre de usuario '" + user + "' ya estÃ¡ en uso.\n"
 							+ "Por favor, elija otro nombre de usuario.",
 					"Usuario duplicado", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 
-		// Validar longitud mínima de contraseña
+		// Validar longitud mÃ­nima de contraseÃ±a
 		if (pass.length() < 4) {
-			JOptionPane.showMessageDialog(this, "La contraseña debe tener al menos 4 caracteres.",
-					"Contraseña muy corta", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(this, "La contraseÃ±a debe tener al menos 4 caracteres.",
+					"ContraseÃ±a muy corta", JOptionPane.WARNING_MESSAGE);
 			return;
 		}
 

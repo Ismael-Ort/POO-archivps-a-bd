@@ -54,21 +54,21 @@ public class listDoctor extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new BorderLayout(0, 0));
 		
-		// ========== PANEL DE BÚSQUEDA ==========
+		// ========== PANEL DE BÃšSQUEDA ==========
 		JPanel panelBusqueda = new JPanel();
 		panelBusqueda.setBackground(new Color(240, 248, 255));
-		panelBusqueda.setBorder(new TitledBorder(null, "Búsqueda", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panelBusqueda.setBorder(new TitledBorder(null, "BÃºsqueda", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		contentPanel.add(panelBusqueda, BorderLayout.NORTH);
 		panelBusqueda.setLayout(new FlowLayout(FlowLayout.LEFT));
 		
-		JLabel lblBuscar = new JLabel("Buscar por nombre o cédula:");
+		JLabel lblBuscar = new JLabel("Buscar por nombre o cÃ©dula:");
 		panelBusqueda.add(lblBuscar);
 		
 		txtBuscar = new JTextField();
 		txtBuscar.setColumns(30);
 		panelBusqueda.add(txtBuscar);
 		
-		// Búsqueda en tiempo real
+		// BÃºsqueda en tiempo real
 		txtBuscar.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
@@ -113,21 +113,21 @@ public class listDoctor extends JDialog {
 					};
 					table = new JTable();
 					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-					String[] headers = {"Código", "Cédula", "Nombre Completo", "Especialidad", "Citas/Día", "Horario", "Estado"};
+					String[] headers = {"CÃ³digo", "CÃ©dula", "Nombre Completo", "Especialidad", "Citas/DÃ­a", "Horario", "Estado"};
 					model.setColumnIdentifiers(headers);
 					table.setModel(model);
 					scrollPane.setViewportView(table);
 					
 					// Ajustar anchos de columnas
-					table.getColumnModel().getColumn(0).setPreferredWidth(80);  // Código
-					table.getColumnModel().getColumn(1).setPreferredWidth(110); // Cédula
+					table.getColumnModel().getColumn(0).setPreferredWidth(80);  // CÃ³digo
+					table.getColumnModel().getColumn(1).setPreferredWidth(110); // CÃ©dula
 					table.getColumnModel().getColumn(2).setPreferredWidth(200); // Nombre completo
 					table.getColumnModel().getColumn(3).setPreferredWidth(130); // Especialidad
-					table.getColumnModel().getColumn(4).setPreferredWidth(70);  // Citas/Día
+					table.getColumnModel().getColumn(4).setPreferredWidth(70);  // Citas/DÃ­a
 					table.getColumnModel().getColumn(5).setPreferredWidth(120); // Horario
 					table.getColumnModel().getColumn(6).setPreferredWidth(80);  // Estado
 					
-					// Listener para selección
+					// Listener para selecciÃ³n
 					table.getSelectionModel().addListSelectionListener(e -> {
 						if (!e.getValueIsAdjusting() && table.getSelectedRow() != -1) {
 							int index = table.getSelectedRow();
@@ -138,7 +138,7 @@ public class listDoctor extends JDialog {
 							btnModificar.setEnabled(true);
 							btnActivarDesactivar.setEnabled(true);
 							
-							// Cambiar texto del botón según el estado
+							// Cambiar texto del botÃ³n segÃºn el estado
 							if (doctorSeleccionado != null) {
 								if (doctorSeleccionado.isActivo()) {
 									btnActivarDesactivar.setText("Desactivar");
@@ -169,7 +169,7 @@ public class listDoctor extends JDialog {
 							modDoctor dialog = new modDoctor(doctorSeleccionado);
 							dialog.setModal(true);
 							dialog.setVisible(true);
-							cargarDoctores(); // Recargar tabla después de modificar
+							cargarDoctores(); // Recargar tabla despuÃ©s de modificar
 							doctorSeleccionado = null;
 							btnModificar.setEnabled(false);
 							btnActivarDesactivar.setEnabled(false);
@@ -192,7 +192,7 @@ public class listDoctor extends JDialog {
 						if (doctorSeleccionado != null) {
 							String accion = doctorSeleccionado.isActivo() ? "desactivar" : "activar";
 							int confirmacion = JOptionPane.showConfirmDialog(listDoctor.this, 
-								"¿Está seguro que desea " + accion + " al Dr. " + 
+								"Â¿EstÃ¡ seguro que desea " + accion + " al Dr. " + 
 								doctorSeleccionado.getNombre() + " " + doctorSeleccionado.getApellido() + "?", 
 								"Confirmar " + accion, 
 								JOptionPane.YES_NO_OPTION);
@@ -201,7 +201,7 @@ public class listDoctor extends JDialog {
 								doctorSeleccionado.setActivo(!doctorSeleccionado.isActivo());
 								JOptionPane.showMessageDialog(listDoctor.this, 
 									"Doctor " + (doctorSeleccionado.isActivo() ? "activado" : "desactivado") + " exitosamente", 
-									"Operación exitosa", 
+									"OperaciÃ³n exitosa", 
 									JOptionPane.INFORMATION_MESSAGE);
 								cargarDoctores();
 								doctorSeleccionado = null;
@@ -230,7 +230,7 @@ public class listDoctor extends JDialog {
 		cargarDoctores();
 	}
 	
-	// ========== MÉTODO PARA CARGAR TODOS LOS DOCTORES ==========
+	// ========== MÃ‰TODO PARA CARGAR TODOS LOS DOCTORES ==========
 	public static void cargarDoctores() {
 		model.setRowCount(0);
 		row = new Object[model.getColumnCount()];
@@ -246,7 +246,7 @@ public class listDoctor extends JDialog {
 		}
 	}
 	
-	// ========== MÉTODO PARA BUSCAR DOCTORES ==========
+	// ========== MÃ‰TODO PARA BUSCAR DOCTORES ==========
 	private void buscarDoctores(String criterio) {
 		model.setRowCount(0);
 		row = new Object[model.getColumnCount()];
@@ -276,7 +276,7 @@ public class listDoctor extends JDialog {
 		
 		if (model.getRowCount() == 0) {
 			JOptionPane.showMessageDialog(this, 
-				"No se encontraron doctores con ese criterio de búsqueda", 
+				"No se encontraron doctores con ese criterio de bÃºsqueda", 
 				"Sin resultados", 
 				JOptionPane.INFORMATION_MESSAGE);
 		}

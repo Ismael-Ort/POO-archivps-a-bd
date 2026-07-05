@@ -73,7 +73,7 @@ public class modDoctor extends JDialog {
 		this.doctorAModificar = doctor;
 
 		if (doctor == null) {
-			JOptionPane.showMessageDialog(this, "No se ha seleccionado ning˙n doctor", "Error",
+			JOptionPane.showMessageDialog(this, "No se ha seleccionado ning√∫n doctor", "Error",
 					JOptionPane.ERROR_MESSAGE);
 			dispose();
 			return;
@@ -97,8 +97,8 @@ public class modDoctor extends JDialog {
 	}
 
 	private void crearComponentes() {
-		// ========== C”DIGO (NO EDITABLE) ==========
-		JLabel lblCodigo = new JLabel("CÛdigo:");
+		// ========== C√ìDIGO (NO EDITABLE) ==========
+		JLabel lblCodigo = new JLabel("C√≥digo:");
 		lblCodigo.setBounds(540, 15, 60, 20);
 		contentPanel.add(lblCodigo);
 
@@ -124,8 +124,8 @@ public class modDoctor extends JDialog {
 		txtApellido.setBounds(280, 38, 245, 26);
 		contentPanel.add(txtApellido);
 
-		// ========== FILA 2: C…DULA (NO EDITABLE) Y TEL…FONO ==========
-		JLabel lblCedula = new JLabel("CÈdula:");
+		// ========== FILA 2: C√âDULA (NO EDITABLE) Y TEL√âFONO ==========
+		JLabel lblCedula = new JLabel("C√©dula:");
 		lblCedula.setBounds(15, 80, 100, 20);
 		contentPanel.add(lblCedula);
 
@@ -139,7 +139,7 @@ public class modDoctor extends JDialog {
 		txtCedula.setBounds(15, 103, 180, 26);
 		contentPanel.add(txtCedula);
 
-		JLabel lblTelefono = new JLabel("TelÈfono:");
+		JLabel lblTelefono = new JLabel("Tel√©fono:");
 		lblTelefono.setBounds(210, 80, 100, 20);
 		contentPanel.add(lblTelefono);
 
@@ -181,8 +181,8 @@ public class modDoctor extends JDialog {
 		spnFechaNacimiento.setBounds(15, 168, 150, 26);
 		contentPanel.add(spnFechaNacimiento);
 
-		// ========== DIRECCI”N (TEXTAREA) ==========
-		JLabel lblDireccion = new JLabel("DirecciÛn:");
+		// ========== DIRECCI√ìN (TEXTAREA) ==========
+		JLabel lblDireccion = new JLabel("Direcci√≥n:");
 		lblDireccion.setBounds(180, 145, 100, 20);
 		contentPanel.add(lblDireccion);
 
@@ -193,19 +193,19 @@ public class modDoctor extends JDialog {
 		scrollDireccion.setBounds(180, 168, 460, 60);
 		contentPanel.add(scrollDireccion);
 
-		// ========== FILA 4: ESPECIALIDAD Y CITAS POR DÕA ==========
+		// ========== FILA 4: ESPECIALIDAD Y CITAS POR D√çA ==========
 		JLabel lblEspecialidad = new JLabel("Especialidad:");
 		lblEspecialidad.setBounds(15, 245, 100, 20);
 		contentPanel.add(lblEspecialidad);
 
 		cbxEspecialidad = new JComboBox<String>();
-		cbxEspecialidad.setModel(new DefaultComboBoxModel<>(new String[] { "<Seleccione>", "CardiologÌa", "PediatrÌa",
-				"DermatologÌa", "NeurologÌa", "GinecologÌa", "Medicina General", "TraumatologÌa", "OftalmologÌa",
-				"OtorrinolaringologÌa", "PsiquiatrÌa", "UrologÌa", "EndocrinologÌa" }));
+		cbxEspecialidad.setModel(new DefaultComboBoxModel<>(new String[] { "<Seleccione>", "Cardiolog√≠a", "Pediatr√≠a",
+				"Dermatolog√≠a", "Neurolog√≠a", "Ginecolog√≠a", "Medicina General", "Traumatolog√≠a", "Oftalmolog√≠a",
+				"Otorrinolaringolog√≠a", "Psiquiatr√≠a", "Urolog√≠a", "Endocrinolog√≠a" }));
 		cbxEspecialidad.setBounds(15, 268, 280, 26);
 		contentPanel.add(cbxEspecialidad);
 
-		JLabel lblCitasPorDia = new JLabel("Citas por dÌa:");
+		JLabel lblCitasPorDia = new JLabel("Citas por d√≠a:");
 		lblCitasPorDia.setBounds(310, 245, 100, 20);
 		contentPanel.add(lblCitasPorDia);
 
@@ -214,12 +214,12 @@ public class modDoctor extends JDialog {
 		spnCitasPorDia.setBounds(310, 268, 80, 26);
 		contentPanel.add(spnCitasPorDia);
 
-		JLabel lblInfoCitas = new JLabel("(M·ximo 20)");
+		JLabel lblInfoCitas = new JLabel("(M√°ximo 20)");
 		lblInfoCitas.setBounds(400, 245, 100, 20);
 		contentPanel.add(lblInfoCitas);
 
-		// ========== FILA 5: N⁄MERO DE LICENCIA (NO EDITABLE) ==========
-		JLabel lblNumeroLicencia = new JLabel("N˙mero de Licencia:");
+		// ========== FILA 5: N√öMERO DE LICENCIA (NO EDITABLE) ==========
+		JLabel lblNumeroLicencia = new JLabel("N√∫mero de Licencia:");
 		lblNumeroLicencia.setBounds(15, 310, 200, 20);
 		contentPanel.add(lblNumeroLicencia);
 
@@ -290,7 +290,7 @@ public class modDoctor extends JDialog {
 		// Especialidad
 		cbxEspecialidad.setSelectedItem(doctorAModificar.getEspecialidad());
 
-		// Citas por dÌa
+		// Citas por d√≠a
 		spnCitasPorDia.setValue(doctorAModificar.getCitasPorDia());
 
 		// Horarios
@@ -323,7 +323,7 @@ public class modDoctor extends JDialog {
 	}
 
 	private void configurarDeteccionCambios() {
-		// Deshabilitar botÛn inicialmente
+		// Deshabilitar bot√≥n inicialmente
 		btnGuardar.setEnabled(false);
 
 		// Listener para campos de texto
@@ -404,10 +404,10 @@ public class modDoctor extends JDialog {
 
 	private boolean validarNombre(String texto, String campo) {
 		// Solo letras, espacios y tildes
-		if (!texto.matches("[a-z·ÈÌÛ˙Ò¸A-Z¡…Õ”⁄—‹ ]+")) {
+		if (!texto.matches("[a-z√°√©√≠√≥√∫√±√ºA-Z√Å√â√ç√ì√ö√ë√ú ]+")) {
 			JOptionPane.showMessageDialog(this,
-					campo + " solo puede contener letras y espacios.\nNo se permiten n˙meros ni caracteres especiales.",
-					"Nombre inv·lido", JOptionPane.ERROR_MESSAGE);
+					campo + " solo puede contener letras y espacios.\nNo se permiten n√∫meros ni caracteres especiales.",
+					"Nombre inv√°lido", JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
 		return true;
@@ -417,14 +417,14 @@ public class modDoctor extends JDialog {
 		// ========== 1. LIMPIAR DATOS ==========
 		String telefonoLimpio = txtTelefono.getText().replaceAll("[^0-9]", "");
 
-		// ========== 2. VALIDAR CAMPOS VACÕOS ==========
+		// ========== 2. VALIDAR CAMPOS VAC√çOS ==========
 		if (txtNombre.getText().trim().isEmpty() || txtApellido.getText().trim().isEmpty()
 				|| telefonoLimpio.length() != 10 || txtDireccion.getText().trim().isEmpty()
 				|| cbxEspecialidad.getSelectedIndex() == 0) {
 
 			JOptionPane.showMessageDialog(this,
-					"Complete todos los campos correctamente.\n\n" + "Verifique:\n" + "ï TelÈfono: 10 dÌgitos\n"
-							+ "ï DirecciÛn completa\n" + "ï Especialidad seleccionada",
+					"Complete todos los campos correctamente.\n\n" + "Verifique:\n" + "‚Ä¢ Tel√©fono: 10 d√≠gitos\n"
+							+ "‚Ä¢ Direcci√≥n completa\n" + "‚Ä¢ Especialidad seleccionada",
 					"Campos incompletos", JOptionPane.WARNING_MESSAGE);
 			return;
 		}
@@ -440,13 +440,13 @@ public class modDoctor extends JDialog {
 			return;
 		}
 
-		// ========== 3. VALIDAR TEL…FONO DUPLICADO (SOLO SI CAMBI”) ==========
+		// ========== 3. VALIDAR TEL√âFONO DUPLICADO (SOLO SI CAMBI√ì) ==========
 		if (!telefonoLimpio.equals(telefonoOriginal)) {
 			if (Clinica.getInstance().isTelefonoRegistrado(telefonoLimpio, doctorAModificar.getCedula())) {
 				JOptionPane.showMessageDialog(this,
-						"Este telÈfono ya est· registrado en el sistema.\n" + "TelÈfono: " + txtTelefono.getText()
-								+ "\n" + "Por favor ingrese un telÈfono diferente.",
-						"TelÈfono duplicado", JOptionPane.ERROR_MESSAGE);
+						"Este tel√©fono ya est√° registrado en el sistema.\n" + "Tel√©fono: " + txtTelefono.getText()
+								+ "\n" + "Por favor ingrese un tel√©fono diferente.",
+						"Tel√©fono duplicado", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 		}
@@ -457,7 +457,7 @@ public class modDoctor extends JDialog {
 			LocalDate fechaNac = fechaNacDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
 			if (fechaNac.isAfter(LocalDate.now())) {
-				JOptionPane.showMessageDialog(this, "La fecha de nacimiento no puede ser futura", "Fecha inv·lida",
+				JOptionPane.showMessageDialog(this, "La fecha de nacimiento no puede ser futura", "Fecha inv√°lida",
 						JOptionPane.ERROR_MESSAGE);
 				return;
 			}
@@ -471,7 +471,7 @@ public class modDoctor extends JDialog {
 
 			if (!horarioFin.isAfter(horarioInicio)) {
 				JOptionPane.showMessageDialog(this, "El horario de fin debe ser posterior al de inicio",
-						"Horario inv·lido", JOptionPane.ERROR_MESSAGE);
+						"Horario inv√°lido", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 
@@ -499,10 +499,10 @@ public class modDoctor extends JDialog {
 			// ========== 7. GUARDAR CAMBIOS ==========
 			if (Clinica.getInstance().modificarDoctor(doctorAModificar)) {
 				JOptionPane.showMessageDialog(this,
-						"Doctor modificado exitosamente\n\n" + "CÛdigo: " + doctorAModificar.getCodigoDoctor() + "\n"
+						"Doctor modificado exitosamente\n\n" + "C√≥digo: " + doctorAModificar.getCodigoDoctor() + "\n"
 								+ "Nombre: " + doctorAModificar.getNombre() + " " + doctorAModificar.getApellido()
 								+ "\n" + "Horario: " + horarioInicioStr + " - " + horarioFinStr,
-						"ModificaciÛn Exitosa", JOptionPane.INFORMATION_MESSAGE);
+						"Modificaci√≥n Exitosa", JOptionPane.INFORMATION_MESSAGE);
 				dispose();
 			} else {
 				JOptionPane.showMessageDialog(this, "Error al modificar el doctor", "Error", JOptionPane.ERROR_MESSAGE);
@@ -531,7 +531,7 @@ public class modDoctor extends JDialog {
 		return horas.toArray(new String[0]);
 	}
 
-	// ========== M…TODOS AUXILIARES PARA FORMATEAR ==========
+	// ========== M√âTODOS AUXILIARES PARA FORMATEAR ==========
 	private String formatearCedula(String cedula) {
 		if (cedula.length() == 11) {
 			return cedula.substring(0, 3) + "-" + cedula.substring(3, 10) + "-" + cedula.substring(10);

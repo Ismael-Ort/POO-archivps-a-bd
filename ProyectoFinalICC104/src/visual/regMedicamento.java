@@ -26,7 +26,7 @@ public class regMedicamento extends JDialog {
      * Constructor para registrar un nuevo medicamento.
      * Recibe: nada.
      * Hace: configura la ventana, inicializa todos los componentes del formulario
-     *       (nombre, dosis, frecuencia, duraciÛn, vÌa, indicaciones).
+     *       (nombre, dosis, frecuencia, duraci√≥n, v√≠a, indicaciones).
      * Devuelve: nada (constructor).
      */
     public regMedicamento() {
@@ -77,8 +77,8 @@ public class regMedicamento extends JDialog {
     /**
      * Construye todos los elementos visuales del formulario de registro.
      * Recibe: nada.
-     * Hace: crea labels, campos de texto, combos, spinners, ·rea de texto,
-     *       botones de acciÛn y los agrega al panel principal.
+     * Hace: crea labels, campos de texto, combos, spinners, √°rea de texto,
+     *       botones de acci√≥n y los agrega al panel principal.
      * Devuelve: nada.
      */
     private void construirFormulario() {
@@ -91,19 +91,19 @@ public class regMedicamento extends JDialog {
         txtNombre.setBounds(150, 20, 330, 25);
         contentPanel.add(txtNombre);
 
-        JLabel lblVia = new JLabel("VÌa:");
+        JLabel lblVia = new JLabel("V√≠a:");
         lblVia.setBounds(20, 60, 120, 25);
         contentPanel.add(lblVia);
 
         cbVia = new JComboBox<>();
         cbVia.setModel(new DefaultComboBoxModel<>(new String[]{
                 "< Seleccione >", "Oral", "Intravenosa", "Intramuscular",
-                "Subcut·nea", "TÛpica", "Inhalada", "Rectal", "Oft·lmica", "”tica"
+                "Subcut√°nea", "T√≥pica", "Inhalada", "Rectal", "Oft√°lmica", "√ìtica"
         }));
         cbVia.setBounds(150, 60, 150, 25);
         contentPanel.add(cbVia);
 
-        JLabel lblDuracion = new JLabel("DuraciÛn (dÌas):");
+        JLabel lblDuracion = new JLabel("Duraci√≥n (d√≠as):");
         lblDuracion.setBounds(20, 100, 120, 25);
         contentPanel.add(lblDuracion);
 
@@ -155,8 +155,8 @@ public class regMedicamento extends JDialog {
     /**
      * Carga en el formulario los datos de un medicamento existente.
      * Recibe: un objeto Medicamento m que contiene los valores a mostrar.
-     * Hace: asigna en los campos del formulario el nombre, dosis, vÌa,
-     *       duraciÛn, frecuencia e indicaciones del medicamento.
+     * Hace: asigna en los campos del formulario el nombre, dosis, v√≠a,
+     *       duraci√≥n, frecuencia e indicaciones del medicamento.
      * Devuelve: nada.
      */
     private void cargarDatos(Medicamento m) {
@@ -170,10 +170,10 @@ public class regMedicamento extends JDialog {
     }
 
     /**
-     * Guarda o actualiza un medicamento seg˙n el modo del formulario.
+     * Guarda o actualiza un medicamento seg√∫n el modo del formulario.
      * Recibe: nada.
      * Hace:
-     *   - Valida que el nombre y la vÌa hayan sido ingresados.
+     *   - Valida que el nombre y la v√≠a hayan sido ingresados.
      *   - Toma todos los datos escritos por el usuario.
      *   - Si medicamentoEditar no es null: actualiza ese medicamento.
      *   - Si es un registro nuevo: crea un nuevo objeto Medicamento.
@@ -198,7 +198,7 @@ public class regMedicamento extends JDialog {
         }
 
         if (via.equals("< Seleccione >")) {
-            JOptionPane.showMessageDialog(this, "Debe seleccionar una vÌa de administraciÛn.");
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una v√≠a de administraci√≥n.");
             return;
         }
 

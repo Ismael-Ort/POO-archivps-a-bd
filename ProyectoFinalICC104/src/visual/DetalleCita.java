@@ -21,7 +21,7 @@ public class DetalleCita extends JDialog {
 	private Cita cita;
 
 	public DetalleCita(Cita cita) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(DetalleCita.class.getResource("/javax/swing/plaf/metal/icons/ocean/menu.gif")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(DetalleCita.class.getResource("/recursos/resp.jpg")));
 		this.cita = cita;
 
 		setTitle("Detalles de la Cita");

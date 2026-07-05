@@ -27,7 +27,7 @@ public class GestionTratamientos extends JDialog {
     private DefaultTableModel modeloTabla;
 
     public GestionTratamientos() {
-    	setIconImage(Toolkit.getDefaultToolkit().getImage(GestionTratamientos.class.getResource("/com/sun/java/swing/plaf/windows/icons/DetailsView.gif")));
+    	setIconImage(Toolkit.getDefaultToolkit().getImage(GestionTratamientos.class.getResource("/recursos/agu.jpg")));
         setTitle("Gestion de Tratamientos");
         setBounds(100, 100, 900, 600);
         setLocationRelativeTo(null);

@@ -46,8 +46,8 @@ public class regAlergia extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 
-		// ========== AL…RGENO ==========
-		JLabel lblAlergeno = new JLabel("AlÈrgeno:");
+		// ========== AL√âRGENO ==========
+		JLabel lblAlergeno = new JLabel("Al√©rgeno:");
 		lblAlergeno.setBounds(15, 15, 100, 20);
 		contentPanel.add(lblAlergeno);
 
@@ -56,7 +56,7 @@ public class regAlergia extends JDialog {
 		contentPanel.add(txtNombre);
 		txtNombre.setColumns(10);
 
-		JLabel lblInfo = new JLabel("(Ejemplo: Polen, Penicilina, ManÌ, etc.)");
+		JLabel lblInfo = new JLabel("(Ejemplo: Polen, Penicilina, Man√≠, etc.)");
 		lblInfo.setBounds(15, 67, 300, 20);
 		contentPanel.add(lblInfo);
 
@@ -105,20 +105,20 @@ public class regAlergia extends JDialog {
 
 	private boolean validarNombre(String texto) {
 		// Solo letras, espacios y tildes
-		if (!texto.matches("[a-z·ÈÌÛ˙Ò¸A-Z¡…Õ”⁄—‹ ]+")) {
+		if (!texto.matches("[a-z√°√©√≠√≥√∫√±√ºA-Z√Å√â√ç√ì√ö√ë√ú ]+")) {
 			JOptionPane.showMessageDialog(this,
-					"El alÈrgeno solo puede contener letras y espacios.\nNo se permiten n˙meros ni caracteres especiales.",
-					"Nombre inv·lido", JOptionPane.ERROR_MESSAGE);
+					"El al√©rgeno solo puede contener letras y espacios.\nNo se permiten n√∫meros ni caracteres especiales.",
+					"Nombre inv√°lido", JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
 		return true;
 	}
 
 	private void registrarAlergia() {
-		// Validar campos vacÌos
+		// Validar campos vac√≠os
 		if (txtNombre.getText().trim().isEmpty() || cbxTipo.getSelectedIndex() == 0) {
 			JOptionPane.showMessageDialog(this, 
-				"Complete todos los campos:\n\nï AlÈrgeno\nï Tipo de alergia",
+				"Complete todos los campos:\n\n‚Ä¢ Al√©rgeno\n‚Ä¢ Tipo de alergia",
 				"Campos incompletos", 
 				JOptionPane.WARNING_MESSAGE);
 			return;
@@ -135,8 +135,8 @@ public class regAlergia extends JDialog {
 		// Validar duplicado
 		if (!Clinica.getInstance().validarExistenciaAlergia(nombreAlergia)) {
 			JOptionPane.showMessageDialog(this,
-				"Esta alergia ya est· registrada en el sistema.\n" + 
-				"AlÈrgeno: " + nombreAlergia,
+				"Esta alergia ya est√° registrada en el sistema.\n" + 
+				"Al√©rgeno: " + nombreAlergia,
 				"Alergia duplicada", 
 				JOptionPane.ERROR_MESSAGE);
 			return;
@@ -148,7 +148,7 @@ public class regAlergia extends JDialog {
 
 		JOptionPane.showMessageDialog(this,
 			"Alergia registrada exitosamente\n\n" +
-			"AlÈrgeno: " + nombreAlergia + "\n" +
+			"Al√©rgeno: " + nombreAlergia + "\n" +
 			"Tipo: " + cbxTipo.getSelectedItem().toString(),
 			"Registro Exitoso", 
 			JOptionPane.INFORMATION_MESSAGE);

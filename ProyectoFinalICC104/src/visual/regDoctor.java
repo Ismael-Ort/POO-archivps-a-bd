@@ -79,7 +79,7 @@ public class regDoctor extends JDialog {
 
 	private void inicializarComponentes() {
 
-		JLabel lblCodigo = new JLabel("CÛdigo:");
+		JLabel lblCodigo = new JLabel("C√≥digo:");
 		lblCodigo.setBounds(540, 15, 60, 20);
 		contentPanel.add(lblCodigo);
 
@@ -129,7 +129,7 @@ public class regDoctor extends JDialog {
 	}
 
 	private void crearCamposCedulaTelefono() {
-		JLabel lblCedula = new JLabel("CÈdula:");
+		JLabel lblCedula = new JLabel("C√©dula:");
 		lblCedula.setBounds(15, 80, 100, 20);
 		contentPanel.add(lblCedula);
 
@@ -143,7 +143,7 @@ public class regDoctor extends JDialog {
 		txtCedula.setBounds(15, 103, 180, 26);
 		contentPanel.add(txtCedula);
 
-		JLabel lblTelefono = new JLabel("TelÈfono:");
+		JLabel lblTelefono = new JLabel("Tel√©fono:");
 		lblTelefono.setBounds(210, 80, 100, 20);
 		contentPanel.add(lblTelefono);
 
@@ -191,7 +191,7 @@ public class regDoctor extends JDialog {
 	}
 
 	private void crearCampoDireccion() {
-		JLabel lblDireccion = new JLabel("DirecciÛn:");
+		JLabel lblDireccion = new JLabel("Direcci√≥n:");
 		lblDireccion.setBounds(180, 145, 100, 20);
 		contentPanel.add(lblDireccion);
 
@@ -209,13 +209,13 @@ public class regDoctor extends JDialog {
 		contentPanel.add(lblEspecialidad);
 
 		cbxEspecialidad = new JComboBox<String>();
-		cbxEspecialidad.setModel(new DefaultComboBoxModel<>(new String[] { "<Seleccione>", "CardiologÌa", "PediatrÌa",
-				"DermatologÌa", "NeurologÌa", "GinecologÌa", "Medicina General", "TraumatologÌa", "OftalmologÌa",
-				"OtorrinolaringologÌa", "PsiquiatrÌa", "UrologÌa", "EndocrinologÌa" }));
+		cbxEspecialidad.setModel(new DefaultComboBoxModel<>(new String[] { "<Seleccione>", "Cardiolog√≠a", "Pediatr√≠a",
+				"Dermatolog√≠a", "Neurolog√≠a", "Ginecolog√≠a", "Medicina General", "Traumatolog√≠a", "Oftalmolog√≠a",
+				"Otorrinolaringolog√≠a", "Psiquiatr√≠a", "Urolog√≠a", "Endocrinolog√≠a" }));
 		cbxEspecialidad.setBounds(15, 268, 280, 26);
 		contentPanel.add(cbxEspecialidad);
 
-		JLabel lblCitasPorDia = new JLabel("Citas por dÌa:");
+		JLabel lblCitasPorDia = new JLabel("Citas por d√≠a:");
 		lblCitasPorDia.setBounds(310, 245, 100, 20);
 		contentPanel.add(lblCitasPorDia);
 
@@ -224,13 +224,13 @@ public class regDoctor extends JDialog {
 		spnCitasPorDia.setBounds(310, 268, 80, 26);
 		contentPanel.add(spnCitasPorDia);
 
-		JLabel lblInfoCitas = new JLabel("(M·ximo 20)");
+		JLabel lblInfoCitas = new JLabel("(M√°ximo 20)");
 		lblInfoCitas.setBounds(400, 245, 100, 20);
 		contentPanel.add(lblInfoCitas);
 	}
 
 	private void crearCampoLicencia() {
-		JLabel lblNumeroLicencia = new JLabel("N˙mero de Licencia MÈdica:");
+		JLabel lblNumeroLicencia = new JLabel("N√∫mero de Licencia M√©dica:");
 		lblNumeroLicencia.setBounds(15, 310, 200, 20);
 		contentPanel.add(lblNumeroLicencia);
 
@@ -296,7 +296,7 @@ public class regDoctor extends JDialog {
 		lblUsuario.setBounds(15, 41, 69, 20);
 		panel.add(lblUsuario);
 
-		JLabel lblContrasena = new JLabel("ContraseÒa:");
+		JLabel lblContrasena = new JLabel("Contrase√±a:");
 		lblContrasena.setBounds(15, 78, 85, 20);
 		panel.add(lblContrasena);
 
@@ -310,11 +310,11 @@ public class regDoctor extends JDialog {
 		txtContrasena.setColumns(10);
 		panel.add(txtContrasena);
 
-		JLabel lblNota1 = new JLabel("Nota: El usuario y la contraseÒa ");
+		JLabel lblNota1 = new JLabel("Nota: El usuario y la contrase√±a ");
 		lblNota1.setBounds(15, 114, 230, 20);
 		panel.add(lblNota1);
 
-		JLabel lblNota2 = new JLabel("no podr·n ser modificados.");
+		JLabel lblNota2 = new JLabel("no podr√°n ser modificados.");
 		lblNota2.setBounds(15, 133, 225, 20);
 		panel.add(lblNota2);
 	}
@@ -365,10 +365,10 @@ public class regDoctor extends JDialog {
 	}
 
 	private boolean validarNombre(String texto, String campo) {
-		if (!texto.matches("[a-z·ÈÌÛ˙Ò¸A-Z¡…Õ”⁄—‹ ]+")) {
+		if (!texto.matches("[a-z√°√©√≠√≥√∫√±√ºA-Z√Å√â√ç√ì√ö√ë√ú ]+")) {
 			JOptionPane.showMessageDialog(this,
-					campo + " solo puede contener letras y espacios.\nNo se permiten n˙meros ni caracteres especiales.",
-					"Nombre inv·lido", JOptionPane.ERROR_MESSAGE);
+					campo + " solo puede contener letras y espacios.\nNo se permiten n√∫meros ni caracteres especiales.",
+					"Nombre inv√°lido", JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
 		return true;
@@ -386,9 +386,9 @@ public class regDoctor extends JDialog {
 				|| txtContrasena.getText().isEmpty()) {
 
 			JOptionPane.showMessageDialog(this,
-					"Complete todos los campos correctamente.\n\n" + "Verifique:\n" + "ï CÈdula: 11 dÌgitos\n"
-							+ "ï TelÈfono: 10 dÌgitos\n" + "ï Licencia: al menos 4 caracteres\n"
-							+ "ï Usuario y contraseÒa son obligatorios",
+					"Complete todos los campos correctamente.\n\n" + "Verifique:\n" + "‚Ä¢ C√©dula: 11 d√≠gitos\n"
+							+ "‚Ä¢ Tel√©fono: 10 d√≠gitos\n" + "‚Ä¢ Licencia: al menos 4 caracteres\n"
+							+ "‚Ä¢ Usuario y contrase√±a son obligatorios",
 					"Campos incompletos", JOptionPane.WARNING_MESSAGE);
 			return;
 		}
@@ -405,22 +405,22 @@ public class regDoctor extends JDialog {
 
 		if (Clinica.getInstance().isCedulaRegistrada(cedulaLimpia)) {
 			JOptionPane.showMessageDialog(this,
-					"Esta cÈdula ya est· registrada en el sistema.\n" + "CÈdula: " + txtCedula.getText(),
-					"CÈdula duplicada", JOptionPane.ERROR_MESSAGE);
+					"Esta c√©dula ya est√° registrada en el sistema.\n" + "C√©dula: " + txtCedula.getText(),
+					"C√©dula duplicada", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 
 		if (Clinica.getInstance().isTelefonoRegistrado(telefonoLimpio)) {
 			JOptionPane.showMessageDialog(this,
-					"Este telÈfono ya est· registrado en el sistema.\n" + "TelÈfono: " + txtTelefono.getText(),
-					"TelÈfono duplicado", JOptionPane.WARNING_MESSAGE);
+					"Este tel√©fono ya est√° registrado en el sistema.\n" + "Tel√©fono: " + txtTelefono.getText(),
+					"Tel√©fono duplicado", JOptionPane.WARNING_MESSAGE);
 			return;
 		}
 
 		String licenciaCompleta = txtNumeroLicencia.getText().trim().toUpperCase();
 		if (Clinica.getInstance().isLicenciaRegistrada(licenciaCompleta)) {
 			JOptionPane.showMessageDialog(this,
-					"Esta licencia mÈdica ya est· registrada.\n" + "Licencia: " + licenciaCompleta,
+					"Esta licencia m√©dica ya est√° registrada.\n" + "Licencia: " + licenciaCompleta,
 					"Licencia duplicada", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
@@ -429,7 +429,7 @@ public class regDoctor extends JDialog {
 
 		if (Control.getInstance().existeUsuario(usuario)) {
 			JOptionPane.showMessageDialog(this,
-					"El nombre de usuario '" + usuario + "' ya est· en uso.\n"
+					"El nombre de usuario '" + usuario + "' ya est√° en uso.\n"
 							+ "Por favor, elija otro nombre de usuario para el doctor.",
 					"Usuario duplicado", JOptionPane.ERROR_MESSAGE);
 			txtUsuario.requestFocus();
@@ -438,7 +438,7 @@ public class regDoctor extends JDialog {
 
 		if (Clinica.getInstance().existeUsuarioDoctor(usuario)) {
 			JOptionPane.showMessageDialog(this,
-					"El nombre de usuario '" + usuario + "' ya est· en uso por otro doctor.\n"
+					"El nombre de usuario '" + usuario + "' ya est√° en uso por otro doctor.\n"
 							+ "Por favor, elija otro nombre de usuario.",
 					"Usuario duplicado", JOptionPane.ERROR_MESSAGE);
 			txtUsuario.requestFocus();
@@ -447,8 +447,8 @@ public class regDoctor extends JDialog {
 
 		String contrasena = txtContrasena.getText().trim();
 		if (contrasena.length() < 4) {
-			JOptionPane.showMessageDialog(this, "La contraseÒa debe tener al menos 4 caracteres.",
-					"ContraseÒa muy corta", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(this, "La contrase√±a debe tener al menos 4 caracteres.",
+					"Contrase√±a muy corta", JOptionPane.WARNING_MESSAGE);
 			txtContrasena.requestFocus();
 			return;
 		}
@@ -458,7 +458,7 @@ public class regDoctor extends JDialog {
 			LocalDate fechaNac = fechaNacDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
 			if (fechaNac.isAfter(LocalDate.now())) {
-				JOptionPane.showMessageDialog(this, "La fecha de nacimiento no puede ser futura", "Fecha inv·lida",
+				JOptionPane.showMessageDialog(this, "La fecha de nacimiento no puede ser futura", "Fecha inv√°lida",
 						JOptionPane.ERROR_MESSAGE);
 				return;
 			}
@@ -471,7 +471,7 @@ public class regDoctor extends JDialog {
 
 			if (!horarioFin.isAfter(horarioInicio)) {
 				JOptionPane.showMessageDialog(this, "El horario de fin debe ser posterior al de inicio",
-						"Horario inv·lido", JOptionPane.ERROR_MESSAGE);
+						"Horario inv√°lido", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 
@@ -493,20 +493,20 @@ public class regDoctor extends JDialog {
 				PersistenciaManager.guardarDatos();
 
 				JOptionPane.showMessageDialog(this,
-						"DOCTOR REGISTRADO EXITOSAMENTE\n\n" + "CÛdigo: " + txtCodigo.getText() + "\n" + "Nombre: "
+						"DOCTOR REGISTRADO EXITOSAMENTE\n\n" + "C√≥digo: " + txtCodigo.getText() + "\n" + "Nombre: "
 								+ nuevoDoctor.getNombre() + " " + nuevoDoctor.getApellido() + "\n" + "Especialidad: "
 								+ especialidad + "\n" + "Licencia: " + licenciaCompleta + "\n" + "Horario: "
-								+ horarioInicioStr + " - " + horarioFinStr + "\n" + "Citas por dÌa: " + citasPorDia
-								+ "\n" + "Usuario: " + usuario + "\n" + "ContraseÒa: ******",
+								+ horarioInicioStr + " - " + horarioFinStr + "\n" + "Citas por d√≠a: " + citasPorDia
+								+ "\n" + "Usuario: " + usuario + "\n" + "Contrase√±a: ******",
 						"REGISTRO EXITOSO", JOptionPane.INFORMATION_MESSAGE);
 				limpiarCampos();
 			} else {
 				String mensajeError = "Error al registrar doctor:\n\n";
 				if (!doctorRegistrado) {
-					mensajeError += "ï No se pudo registrar el doctor\n";
+					mensajeError += "‚Ä¢ No se pudo registrar el doctor\n";
 				}
 				if (!usuarioRegistrado) {
-					mensajeError += "ï No se pudo registrar el usuario\n";
+					mensajeError += "‚Ä¢ No se pudo registrar el usuario\n";
 				}
 				mensajeError += "\nVerifique que no existan duplicados.";
 

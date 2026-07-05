@@ -70,12 +70,12 @@ public class regVacuViea extends JDialog {
 			txtEnfermedad.setEnabled(false);
 		}
 
-		JLabel lblInfo = new JLabel("(Ejemplo: SarampiÛn, Hepatitis B, etc.)");
+		JLabel lblInfo = new JLabel("(Ejemplo: Sarampi√≥n, Hepatitis B, etc.)");
 		lblInfo.setBounds(15, 67, 360, 20);
 		contentPanel.add(lblInfo);
 
-		// ========== FECHA DE APLICACI”N ==========
-		JLabel lblFecha = new JLabel("Fecha de aplicaciÛn:");
+		// ========== FECHA DE APLICACI√ìN ==========
+		JLabel lblFecha = new JLabel("Fecha de aplicaci√≥n:");
 		lblFecha.setBounds(15, 100, 150, 20);
 		contentPanel.add(lblFecha);
 
@@ -86,7 +86,7 @@ public class regVacuViea extends JDialog {
 		spnFecha.setBounds(15, 123, 150, 26);
 		contentPanel.add(spnFecha);
 
-		JLabel lblInfoFecha = new JLabel("(Cuando se aplicÛ)");
+		JLabel lblInfoFecha = new JLabel("(Cuando se aplic√≥)");
 		lblInfoFecha.setBackground(new Color(255, 228, 196));
 		lblInfoFecha.setBounds(180, 126, 200, 20);
 		contentPanel.add(lblInfoFecha);
@@ -97,7 +97,7 @@ public class regVacuViea extends JDialog {
 		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		getContentPane().add(buttonPane, BorderLayout.SOUTH);
 
-		JButton btnAnadir = new JButton("AÒadir");
+		JButton btnAnadir = new JButton("A√±adir");
 		btnAnadir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				registrarVacuna();
@@ -119,7 +119,7 @@ public class regVacuViea extends JDialog {
 	}
 
 	private boolean validarNombre(String texto) {
-		if (!texto.matches("[a-z·ÈÌÛ˙Ò¸A-Z¡…Õ”⁄—‹ ]+")) {
+		if (!texto.matches("[a-z√°√©√≠√≥√∫√±√ºA-Z√Å√â√ç√ì√ö√ë√ú ]+")) {
 			JOptionPane.showMessageDialog(this, "Solo letras y espacios", "Error", JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
@@ -128,7 +128,7 @@ public class regVacuViea extends JDialog {
 
 	private void registrarVacuna() {
 		if (txtEnfermedad.getText().trim().isEmpty()) {
-			JOptionPane.showMessageDialog(this, "Ingrese la enfermedad", "Campo vacÌo", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(this, "Ingrese la enfermedad", "Campo vac√≠o", JOptionPane.WARNING_MESSAGE);
 			txtEnfermedad.requestFocus();
 			return;
 		}
@@ -148,7 +148,7 @@ public class regVacuViea extends JDialog {
 
 		vacunaRegistrada = new VacunaVieja(txtEnfermedad.getText().trim(), fechaAplicacion);
 
-		JOptionPane.showMessageDialog(this, "Vacuna registrada", "…xito", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(this, "Vacuna registrada", "√âxito", JOptionPane.INFORMATION_MESSAGE);
 
 		dispose();
 	}

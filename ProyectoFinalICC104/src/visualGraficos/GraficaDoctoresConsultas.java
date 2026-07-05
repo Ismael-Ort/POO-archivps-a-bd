@@ -24,14 +24,14 @@ public class GraficaDoctoresConsultas extends JFrame {
 
     public GraficaDoctoresConsultas() {
 
-        setTitle("Doctores con Más Consultas");
+        setTitle("Doctores con MÃ¡s Consultas");
         setSize(800, 600);
         setLayout(new BorderLayout());
 
         DefaultCategoryDataset ds = cargarDatos();
 
         chart = ChartFactory.createBarChart(
-                "Doctores con Más Consultas",
+                "Doctores con MÃ¡s Consultas",
                 "Doctor",
                 "Cantidad de Consultas",
                 ds,

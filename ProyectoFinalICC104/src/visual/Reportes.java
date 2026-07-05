@@ -35,7 +35,7 @@ public class Reportes extends JDialog {
     private JComboBox<String> cbReportes;
 
     public Reportes() {
-        setTitle("Reportes de la ClÌnica");
+        setTitle("Reportes de la Cl√≠nica");
         setBounds(100, 100, 1000, 650);
         setModal(true);
         setLocationRelativeTo(null);
@@ -60,13 +60,13 @@ public class Reportes extends JDialog {
 
         cbReportes.addItem("Consultas atendidas por mes");
         cbReportes.addItem("Consultas por especialidad");
-        cbReportes.addItem("Enfermedades m·s diagnosticadas");
+        cbReportes.addItem("Enfermedades m√°s diagnosticadas");
         cbReportes.addItem("Enfermedades bajo vigilancia");
         cbReportes.addItem("Citas atendidas vs no atendidas");
         cbReportes.addItem("Pacientes nuevos vs recurrentes");
-        cbReportes.addItem("Doctores con m·s consultas");
-        cbReportes.addItem("DistribuciÛn por sexo");
-        cbReportes.addItem("Alergias m·s comunes");
+        cbReportes.addItem("Doctores con m√°s consultas");
+        cbReportes.addItem("Distribuci√≥n por sexo");
+        cbReportes.addItem("Alergias m√°s comunes");
 
         contentPanel.add(cbReportes);
 
@@ -160,7 +160,7 @@ public class Reportes extends JDialog {
                 carpeta.mkdir();
             }
 
-            // Tomar gr·fica
+            // Tomar gr√°fica
             ChartPanel cp = (ChartPanel) panelGrafica.getComponent(0);
             BufferedImage chartImage = cp.getChart().createBufferedImage(900, 550);
 
@@ -176,9 +176,9 @@ public class Reportes extends JDialog {
 
             String nombre = cbReportes.getSelectedItem().toString()
                     .replace(" ", "_")
-                    .replace("·", "a").replace("È", "e")
-                    .replace("Ì", "i").replace("Û", "o")
-                    .replace("˙", "u");
+                    .replace("√°", "a").replace("√©", "e")
+                    .replace("√≠", "i").replace("√≥", "o")
+                    .replace("√∫", "u");
 
             String nombreBase = "Reporte_" + nombre;
 

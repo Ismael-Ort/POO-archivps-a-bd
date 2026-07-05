@@ -39,7 +39,7 @@ public class Paciente extends Persona {
 
 	/**
 	 * Constructor simplificado para crear pacientes interesados (Solo con datos
-	 * b·sicos desde agendar cita)
+	 * b√°sicos desde agendar cita)
 	 */
 	public Paciente(String cedula, String nombre, String apellido, String telefono, String codigoPaciente) {
 		this(cedula, nombre, apellido, telefono, codigoPaciente, null);

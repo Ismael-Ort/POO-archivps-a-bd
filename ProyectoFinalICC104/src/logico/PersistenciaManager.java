@@ -5,7 +5,7 @@ import java.io.*;
 public class PersistenciaManager {
 
 	/**
-	 * Guarda TODOS los datos del sistema (Control + Clínica)
+	 * Guarda TODOS los datos del sistema (Control + ClÃ­nica)
 	 */
 	public static void guardarDatos() {
 		guardarControl();
@@ -30,7 +30,7 @@ public class PersistenciaManager {
 	}
 
 	/**
-	 * Guarda el objeto Clínica (pacientes, doctores, citas, etc.)
+	 * Guarda el objeto ClÃ­nica (pacientes, doctores, citas, etc.)
 	 */
 	private static void guardarClinica() {
 		try (FileOutputStream fos = new FileOutputStream("clinica.dat");
@@ -83,7 +83,7 @@ public class PersistenciaManager {
 	}
 
 	/**
-	 * Carga el objeto Clínica
+	 * Carga el objeto ClÃ­nica
 	 */
 	private static boolean cargarClinica() {
 		File archivo = new File("clinica.dat");
@@ -136,7 +136,7 @@ public class PersistenciaManager {
 		File control = new File("control.dat");
 		File clinica = new File("clinica.dat");
 
-		System.out.println("\n=== VERIFICACIÓN DE ARCHIVOS ===");
+		System.out.println("\n=== VERIFICACIÃ“N DE ARCHIVOS ===");
 		System.out.println(
 				"control.dat: " + (control.exists() ? "EXISTE (" + control.length() + " bytes)" : "NO EXISTE"));
 		System.out.println(

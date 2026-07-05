@@ -59,7 +59,7 @@ public class GraficaConsultasEspecialidad extends JFrame {
             if (p.getHistoriaClinica() != null) {
                 for (Consulta c : p.getHistoriaClinica().getConsultas()) {
 
-                    Doctor doc = c.getDoctor();  // El doctor que atendió la consulta
+                    Doctor doc = c.getDoctor();  // El doctor que atendiÃ³ la consulta
 
                     if (doc != null) {
                         String esp = doc.getEspecialidad();

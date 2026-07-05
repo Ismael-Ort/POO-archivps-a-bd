@@ -54,7 +54,7 @@ public class AgendarCita extends JDialog {
 
 	public AgendarCita() {
 		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(AgendarCita.class.getResource("/javax/swing/plaf/metal/icons/ocean/menu.gif")));
+				.getImage(AgendarCita.class.getResource("/recursos/resp.jpg")));
 		setTitle("Agendar Cita");
 		setBounds(100, 100, 633, 600);
 		setLocationRelativeTo(null);
@@ -74,7 +74,7 @@ public class AgendarCita extends JDialog {
 		contentPanel.add(panelPaciente);
 		panelPaciente.setLayout(null);
 
-		JLabel lblCedula = new JLabel("CÈdula:");
+		JLabel lblCedula = new JLabel("C√©dula:");
 		lblCedula.setBounds(10, 25, 80, 20);
 		panelPaciente.add(lblCedula);
 
@@ -89,7 +89,7 @@ public class AgendarCita extends JDialog {
 		txtCedula.setBounds(100, 25, 150, 25);
 		panelPaciente.add(txtCedula);
 
-		// Enter para buscar autom·ticamente
+		// Enter para buscar autom√°ticamente
 		txtCedula.addActionListener(e -> buscarPaciente());
 
 		btnBuscar = new JButton("Buscar Paciente");
@@ -101,7 +101,7 @@ public class AgendarCita extends JDialog {
 		lblNombre.setBounds(10, 65, 80, 20);
 		panelPaciente.add(lblNombre);
 
-		lbltelefono = new JLabel("TelÈfono:");
+		lbltelefono = new JLabel("Tel√©fono:");
 		lbltelefono.setBounds(10, 105, 80, 20);
 		panelPaciente.add(lbltelefono);
 
@@ -263,19 +263,19 @@ public class AgendarCita extends JDialog {
 		String cedulaLimpia = cedula.replaceAll("[^0-9]", "");
 
 		if (cedulaLimpia.length() != 11) {
-			JOptionPane.showMessageDialog(this, "Ingrese una cÈdula v·lida de 11 dÌgitos", "Advertencia",
+			JOptionPane.showMessageDialog(this, "Ingrese una c√©dula v√°lida de 11 d√≠gitos", "Advertencia",
 					JOptionPane.WARNING_MESSAGE);
 			return;
 		}
 
-		// Primero verificar si la cÈdula pertenece a un doctor
+		// Primero verificar si la c√©dula pertenece a un doctor
 		Doctor doctorConEstaCedula = Clinica.getInstance().buscarDoctorPorCedula(cedulaLimpia);
 		if (doctorConEstaCedula != null) {
 			JOptionPane.showMessageDialog(this,
-					"Esta cÈdula pertenece a un doctor del sistema.\n" + "Doctor: " + doctorConEstaCedula.getNombre()
+					"Esta c√©dula pertenece a un doctor del sistema.\n" + "Doctor: " + doctorConEstaCedula.getNombre()
 							+ " " + doctorConEstaCedula.getApellido() + "\n"
 							+ "No puede ser utilizada para agendar citas como paciente.",
-					"CÈdula de Doctor", JOptionPane.WARNING_MESSAGE);
+					"C√©dula de Doctor", JOptionPane.WARNING_MESSAGE);
 			limpiarCamposPaciente();
 			return;
 		}
@@ -284,7 +284,7 @@ public class AgendarCita extends JDialog {
 		pacienteSeleccionado = Clinica.getInstance().buscarPacientePorCedula(cedulaLimpia);
 
 		if (pacienteSeleccionado != null) {
-			// PACIENTE EXISTENTE - Cargar datos y NO permitir ediciÛn
+			// PACIENTE EXISTENTE - Cargar datos y NO permitir edici√≥n
 			cargarDatosPacienteExistente();
 		} else {
 			// NUEVO PACIENTE (interesado) - Habilitar campos para llenar
@@ -379,7 +379,7 @@ public class AgendarCita extends JDialog {
 		pacienteSeleccionado = null;
 
 		// Actualizar mensaje
-		actualizarMensajeEstado("Ingrese una cÈdula y presione Buscar");
+		actualizarMensajeEstado("Ingrese una c√©dula y presione Buscar");
 	}
 
 	private void actualizarHorariosDisponibles() {
@@ -399,13 +399,13 @@ public class AgendarCita extends JDialog {
 		ArrayList<LocalTime> horariosDisponibles = Clinica.getInstance().obtenerHorariosDisponibles(doctor.getCedula(),
 				fecha);
 
-		// Mostrar informaciÛn de citas disponibles
+		// Mostrar informaci√≥n de citas disponibles
 		String textoCitas = Clinica.getInstance().obtenerCitasDisponiblesTexto(doctor.getCedula(), fecha);
 		lblCitasDisponibles.setText(textoCitas);
 
 		// Verificar si hay horarios disponibles
 		if (horariosDisponibles.isEmpty()) {
-			lblMensajeDisponibilidad.setText("No hay horarios disponibles para este dÌa");
+			lblMensajeDisponibilidad.setText("No hay horarios disponibles para este d√≠a");
 			lblMensajeDisponibilidad.setForeground(Color.RED);
 			return;
 		}
@@ -423,7 +423,7 @@ public class AgendarCita extends JDialog {
 		// Validar que se haya buscado un paciente primero
 		String cedulaLimpia = txtCedula.getText().replaceAll("[^0-9]", "");
 		if (cedulaLimpia.length() != 11) {
-			JOptionPane.showMessageDialog(this, "Debe ingresar una cÈdula v·lida de 11 dÌgitos", "Error",
+			JOptionPane.showMessageDialog(this, "Debe ingresar una c√©dula v√°lida de 11 d√≠gitos", "Error",
 					JOptionPane.ERROR_MESSAGE);
 			return;
 		}
@@ -446,26 +446,26 @@ public class AgendarCita extends JDialog {
 				return;
 			}
 
-			// Validar telÈfono para nuevo paciente
+			// Validar tel√©fono para nuevo paciente
 			String telefonoLimpio = txtTelefonio.getText().replaceAll("[^0-9]", "");
 			if (telefonoLimpio.length() != 10) {
-				JOptionPane.showMessageDialog(this, "El telÈfono debe tener 10 dÌgitos", "Error",
+				JOptionPane.showMessageDialog(this, "El tel√©fono debe tener 10 d√≠gitos", "Error",
 						JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 
-			// Validar que el telÈfono no estÈ registrado
+			// Validar que el tel√©fono no est√© registrado
 			if (Clinica.getInstance().isTelefonoRegistrado(telefonoLimpio)) {
 				JOptionPane.showMessageDialog(this,
-						"Este telÈfono ya est· registrado en el sistema.\n"
-								+ "Por favor ingrese un telÈfono diferente.",
-						"TelÈfono Duplicado", JOptionPane.ERROR_MESSAGE);
+						"Este tel√©fono ya est√° registrado en el sistema.\n"
+								+ "Por favor ingrese un tel√©fono diferente.",
+						"Tel√©fono Duplicado", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 
-			// Validar nombre y apellido (sin n˙meros)
-			if (!txtPaciente.getText().trim().matches("[a-zA-Z·ÈÌÛ˙Ò¸¡…Õ”⁄—‹ ]+")
-					|| !txtApellido.getText().trim().matches("[a-zA-Z·ÈÌÛ˙Ò¸¡…Õ”⁄—‹ ]+")) {
+			// Validar nombre y apellido (sin n√∫meros)
+			if (!txtPaciente.getText().trim().matches("[a-zA-Z√°√©√≠√≥√∫√±√º√Å√â√ç√ì√ö√ë√ú ]+")
+					|| !txtApellido.getText().trim().matches("[a-zA-Z√°√©√≠√≥√∫√±√º√Å√â√ç√ì√ö√ë√ú ]+")) {
 				JOptionPane.showMessageDialog(this, "Nombre y apellido solo pueden contener letras y espacios", "Error",
 						JOptionPane.ERROR_MESSAGE);
 				return;
@@ -510,10 +510,10 @@ public class AgendarCita extends JDialog {
 				// NUEVO PACIENTE (interesado) - Crear primero como interesado
 				String telefonoLimpio = txtTelefonio.getText().replaceAll("[^0-9]", "");
 
-				// CORRECCI”N: Constructor correcto con TODOS los par·metros
+				// CORRECCI√ìN: Constructor correcto con TODOS los par√°metros
 				Paciente nuevoInteresado = new Paciente(cedulaLimpia, txtPaciente.getText().trim(),
 						txtApellido.getText().trim(), telefonoLimpio,
-						"INT-" + Clinica.getInstance().getInteresados().size() + 1, // CÛdigo para interesado
+						"INT-" + Clinica.getInstance().getInteresados().size() + 1, // C√≥digo para interesado
 						doctorLogeado.getNumeroLicencia() // Licencia del doctor que lo registra
 				);
 
@@ -527,20 +527,20 @@ public class AgendarCita extends JDialog {
 
 			if (nuevaCita != null) {
 				String tipoPaciente = (pacienteSeleccionado != null) ? "paciente registrado"
-						: "interesado (ser· registrado en consulta)";
+						: "interesado (ser√° registrado en consulta)";
 				JOptionPane.showMessageDialog(this,
-						"CITA AGENDADA EXITOSAMENTE\n\n" + "\n" + "CÛdigo: " + nuevaCita.getCodigoCita() + "\n"
+						"CITA AGENDADA EXITOSAMENTE\n\n" + "\n" + "C√≥digo: " + nuevaCita.getCodigoCita() + "\n"
 								+ "Fecha: " + nuevaCita.getFechaCita() + "\n" + "Hora: " + nuevaCita.getHoraCita()
 								+ "\n" + "Doctor: " + doctorSeleccionado.getNombre() + " "
 								+ doctorSeleccionado.getApellido() + "\n" + "Paciente: " + txtPaciente.getText() + " "
 								+ txtApellido.getText() + "\n" + "Tipo: " + tipoPaciente + "\n" + "",
-						"…xito", JOptionPane.INFORMATION_MESSAGE);
+						"√âxito", JOptionPane.INFORMATION_MESSAGE);
 				dispose();
 			} else {
 				JOptionPane.showMessageDialog(this,
 						"No se pudo agendar la cita. Posibles causas:\n"
-								+ "ï El doctor ya no est· disponible en ese horario\n"
-								+ "ï El doctor alcanzÛ el lÌmite de citas del dÌa\n" + "ï Problema en el sistema",
+								+ "‚Ä¢ El doctor ya no est√° disponible en ese horario\n"
+								+ "‚Ä¢ El doctor alcanz√≥ el l√≠mite de citas del d√≠a\n" + "‚Ä¢ Problema en el sistema",
 						"Error", JOptionPane.ERROR_MESSAGE);
 			}
 

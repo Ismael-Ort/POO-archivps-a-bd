@@ -42,7 +42,7 @@ public class TomaAlergias extends JDialog {
 
 	public TomaAlergias() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(TomaAlergias.class.getResource("/recursos/enfc.jpg")));
-		setTitle("SelecciÛn de Alergias");
+		setTitle("Selecci√≥n de Alergias");
 		setModal(true);
 		setBounds(100, 100, 450, 500);
 		setLocationRelativeTo(null);
@@ -52,12 +52,12 @@ public class TomaAlergias extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 
-		// ========== TÕTULO ==========
+		// ========== T√çTULO ==========
 		JLabel lblTitulo = new JLabel("Seleccione las alergias que padece:");
 		lblTitulo.setBounds(15, 10, 400, 20);
 		contentPanel.add(lblTitulo);
 
-		// ========== B⁄SQUEDA ==========
+		// ========== B√öSQUEDA ==========
 		JLabel lblBuscar = new JLabel("Buscar:");
 		lblBuscar.setBounds(15, 40, 60, 20);
 		contentPanel.add(lblBuscar);
@@ -67,7 +67,7 @@ public class TomaAlergias extends JDialog {
 		contentPanel.add(txtBuscar);
 		txtBuscar.setColumns(10);
 
-		// B˙squeda en tiempo real
+		// B√∫squeda en tiempo real
 		txtBuscar.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
@@ -95,7 +95,7 @@ public class TomaAlergias extends JDialog {
 		scrollPane.setBounds(15, 75, 405, 260);
 		contentPanel.add(scrollPane);
 
-		// ========== BOT”N REGISTRAR NUEVA ==========
+		// ========== BOT√ìN REGISTRAR NUEVA ==========
 		JButton btnRegistrarNueva = new JButton("+ Registrar Nueva Alergia");
 		btnRegistrarNueva.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -148,7 +148,7 @@ public class TomaAlergias extends JDialog {
 		ArrayList<Alergia> alergias = Clinica.getInstance().getAlergias();
 
 		if (alergias == null || alergias.isEmpty()) {
-			JLabel lblVacio = new JLabel("  No hay alergias registradas. Use el botÛn 'Registrar Nueva Alergia'");
+			JLabel lblVacio = new JLabel("  No hay alergias registradas. Use el bot√≥n 'Registrar Nueva Alergia'");
 			panelChecks.add(lblVacio);
 		} else {
 			for (Alergia alergia : alergias) {
@@ -212,7 +212,7 @@ public class TomaAlergias extends JDialog {
 
 		if (alergiasSeleccionadas.isEmpty()) {
 			int confirmacion = JOptionPane.showConfirmDialog(this,
-				"No ha seleccionado ninguna alergia.\nøConfirma que el paciente no tiene alergias?",
+				"No ha seleccionado ninguna alergia.\n¬øConfirma que el paciente no tiene alergias?",
 				"Sin alergias seleccionadas",
 				JOptionPane.YES_NO_OPTION,
 				JOptionPane.QUESTION_MESSAGE);

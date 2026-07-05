@@ -50,7 +50,7 @@ public class Principal extends JFrame {
 
 	public Principal() {
 		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(Principal.class.getResource("/javax/swing/plaf/metal/icons/ocean/computer.gif")));
+				.getImage(Principal.class.getResource("/recursos/adm.jpg")));
 
 		setTitle(
 				"Clínica - Principal ("
@@ -65,7 +65,7 @@ public class Principal extends JFrame {
 		setLocationRelativeTo(null);
 		setResizable(true);
 
-		// ===== CONFIGURAR GUARDADO AUTOMÁTICO =====
+		// ===== CONFIGURAR GUARDADO AUTOMATICO =====
 		configurarAutoGuardado();
 
 		// ===== CONFIGURAR CIERRE DE VENTANA =====

@@ -13,7 +13,7 @@ public class Vacuna implements Serializable {
 	private int cantidad;
 	private Date fechaCaducidad;
 	private String laboratorio; // CORREGIDO: de laboratio a laboratorio
-	private String enfermedad; // Esto indica contra qué enfermedad protege la vacuna
+	private String enfermedad; // Esto indica contra quÃ© enfermedad protege la vacuna
 	private boolean activa;
 
 	public Vacuna() {
@@ -108,14 +108,14 @@ public class Vacuna implements Serializable {
 		this.activa = false;
 	}
 
-	// Método para verificar si está caducada
+	// MÃ©todo para verificar si estÃ¡ caducada
 	public boolean estaCaducada() {
 		if (fechaCaducidad == null)
 			return false;
 		return fechaCaducidad.before(new Date());
 	}
 
-	// Método para verificar si tiene stock disponible
+	// MÃ©todo para verificar si tiene stock disponible
 	public boolean tieneStock() {
 		return cantidad > 0;
 	}

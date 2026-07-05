@@ -39,7 +39,7 @@ public class GraficaSexoPacientes extends JFrame {
     }
 
     // ============================================================
-    //                   CARGAR DATOS DESDE LA CLÍNICA
+    //                   CARGAR DATOS DESDE LA CLINICA
     // ============================================================
     private DefaultPieDataset cargarDatos() {
 
@@ -49,7 +49,7 @@ public class GraficaSexoPacientes extends JFrame {
 
         for (Paciente p : Clinica.getInstance().getPacientes()) {
 
-            char sexo = p.getSexo();   // ← AQUÍ USAMOS CHAR
+            char sexo = p.getSexo();   // AQUI USAMOS CHAR
 
             if (sexo == 'M' || sexo == 'm') {
                 masculino++;

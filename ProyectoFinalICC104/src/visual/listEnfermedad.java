@@ -67,7 +67,7 @@ public class listEnfermedad extends JDialog {
 		gbcLabelNombre.anchor = GridBagConstraints.WEST;
 		panelFiltros.add(new JLabel("Nombre:"), gbcLabelNombre);
 
-		// Filtro por nombre - TextField (ESTA ES LA LÍNEA PROBLEMÁTICA CORREGIDA)
+		// Filtro por nombre - TextField (ESTA ES LA LÃNEA PROBLEMÃTICA CORREGIDA)
 		txtBuscarNombre = new JTextField();
 		GridBagConstraints gbcTxtNombre = new GridBagConstraints();
 		gbcTxtNombre.gridx = 1;
@@ -123,7 +123,7 @@ public class listEnfermedad extends JDialog {
 		gbcComboTipo.weightx = 1.0;
 		panelFiltros.add(cbTipoFiltro, gbcComboTipo);
 
-		// Botón limpiar filtros
+		// BotÃ³n limpiar filtros
 		JButton btnLimpiar = new JButton("Limpiar Filtros");
 		btnLimpiar.addActionListener(e -> limpiarFiltros());
 		GridBagConstraints gbcBoton = new GridBagConstraints();
@@ -134,7 +134,7 @@ public class listEnfermedad extends JDialog {
 		gbcBoton.anchor = GridBagConstraints.EAST;
 		panelFiltros.add(btnLimpiar, gbcBoton);
 
-		// El resto del código se mantiene igual...
+		// El resto del cÃ³digo se mantiene igual...
 		// Panel de contenido
 		JPanel contentPanel = new JPanel();
 		contentPanel.setBackground(new Color(240, 255, 255));

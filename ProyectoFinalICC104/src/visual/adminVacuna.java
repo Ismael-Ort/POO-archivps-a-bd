@@ -116,7 +116,7 @@ public class adminVacuna extends JDialog {
 		lblInfoPaciente.setBounds(15, 100, 400, 15);
 		contentPanel.add(lblInfoPaciente);
 
-		JLabel lblCedula = new JLabel("Cédula:");
+		JLabel lblCedula = new JLabel("CÃ©dula:");
 		lblCedula.setFont(labelFont);
 		lblCedula.setBounds(15, 125, 80, 20);
 		contentPanel.add(lblCedula);
@@ -232,8 +232,8 @@ public class adminVacuna extends JDialog {
 		spnVencimiento.setBounds(15, 345, 120, 25);
 		contentPanel.add(spnVencimiento);
 
-		// ADMINISTRACIÓN
-		JLabel lblSeccionAdmin = new JLabel("Aplicación:");
+		// ADMINISTRACIÃ“N
+		JLabel lblSeccionAdmin = new JLabel("AplicaciÃ³n:");
 		lblSeccionAdmin.setFont(labelFont);
 		lblSeccionAdmin.setBounds(15, 385, 250, 20);
 		contentPanel.add(lblSeccionAdmin);
@@ -440,7 +440,7 @@ public class adminVacuna extends JDialog {
 			LocalDate fechaAplicacion = fechaDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
 			if (fechaAplicacion.isAfter(LocalDate.now())) {
-				int respuesta = JOptionPane.showConfirmDialog(this, "La fecha es futura. ¿Continuar?", "Confirmar",
+				int respuesta = JOptionPane.showConfirmDialog(this, "La fecha es futura. Â¿Continuar?", "Confirmar",
 						JOptionPane.YES_NO_OPTION);
 				if (respuesta != JOptionPane.YES_OPTION) {
 					return;
@@ -448,13 +448,13 @@ public class adminVacuna extends JDialog {
 			}
 
 			if (vacunaSeleccionada.estaCaducada()) {
-				JOptionPane.showMessageDialog(this, "Esta vacuna está caducada", "Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, "Esta vacuna estÃ¡ caducada", "Error", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 
 			if (pacienteSeleccionado.tieneVacuna(vacunaSeleccionada)) {
 				int respuesta = JOptionPane.showConfirmDialog(this,
-						"El paciente ya tiene esta vacuna. ¿Registrar otra dosis?", "Confirmar",
+						"El paciente ya tiene esta vacuna. Â¿Registrar otra dosis?", "Confirmar",
 						JOptionPane.YES_NO_OPTION);
 				if (respuesta != JOptionPane.YES_OPTION) {
 					return;
@@ -467,7 +467,7 @@ public class adminVacuna extends JDialog {
 			boolean exito = Clinica.getInstance().registrarVacunaPaciente(pacienteSeleccionado, registro);
 
 			if (exito) {
-				JOptionPane.showMessageDialog(this, "Vacuna administrada correctamente", "Éxito",
+				JOptionPane.showMessageDialog(this, "Vacuna administrada correctamente", "Ã‰xito",
 						JOptionPane.INFORMATION_MESSAGE);
 				limpiarFormulario();
 				cargarVacunasDisponibles();
@@ -494,7 +494,7 @@ public class adminVacuna extends JDialog {
 		}
 
 		if (txtEnfermera.getText().trim().isEmpty()) {
-			JOptionPane.showMessageDialog(this, "Ingrese quién administra la vacuna", "Error",
+			JOptionPane.showMessageDialog(this, "Ingrese quiÃ©n administra la vacuna", "Error",
 					JOptionPane.WARNING_MESSAGE);
 			txtEnfermera.requestFocus();
 			return false;
@@ -506,12 +506,12 @@ public class adminVacuna extends JDialog {
 		}
 
 		if (vacunaSeleccionada.estaCaducada()) {
-			JOptionPane.showMessageDialog(this, "Esta vacuna está caducada", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, "Esta vacuna estÃ¡ caducada", "Error", JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
 
 		if (!vacunaSeleccionada.isActiva()) {
-			JOptionPane.showMessageDialog(this, "Esta vacuna está inactiva", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, "Esta vacuna estÃ¡ inactiva", "Error", JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
 

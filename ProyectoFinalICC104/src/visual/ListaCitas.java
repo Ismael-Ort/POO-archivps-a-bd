@@ -42,7 +42,7 @@ public class ListaCitas extends JDialog {
 
 	public ListaCitas() {
 		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(ListaCitas.class.getResource("/com/sun/java/swing/plaf/windows/icons/DetailsView.gif")));
+				.getImage(ListaCitas.class.getResource("/recursos/resp.jpg")));
 		setTitle("Lista de Citas");
 		setBounds(100, 100, 900, 600);
 		getContentPane().setLayout(new BorderLayout());
@@ -94,7 +94,7 @@ public class ListaCitas extends JDialog {
 		JScrollPane scrollPane = new JScrollPane();
 		contentPanel.add(scrollPane, BorderLayout.CENTER);
 
-		String[] columnas = { "Código", "Fecha", "Hora", "Paciente", "Doctor", "Motivo", "Estado" };
+		String[] columnas = { "CÃ³digo", "Fecha", "Hora", "Paciente", "Doctor", "Motivo", "Estado" };
 		modelo = new DefaultTableModel(columnas, 0) {
 			public boolean isCellEditable(int row, int column) {
 				return false;
@@ -103,7 +103,7 @@ public class ListaCitas extends JDialog {
 
 		tableCitas = new JTable(modelo);
 
-		// Listener para detectar selección en la tabla
+		// Listener para detectar selecciÃ³n en la tabla
 		tableCitas.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
 				if (!e.getValueIsAdjusting()) {
@@ -262,19 +262,19 @@ public class ListaCitas extends JDialog {
 		citaSeleccionada = Clinica.getInstance().buscarCita(codigoCita);
 
 		if (citaSeleccionada != null) {
-			// Habilitar siempre el botón Ver Detalles
+			// Habilitar siempre el botÃ³n Ver Detalles
 			btnVerDetalles.setEnabled(true);
 
 			// Determinar estado de la cita
 			String estado = citaSeleccionada.getEstadoCita();
 
-			// Botón Realizar Consulta - solo para citas Pendientes
+			// BotÃ³n Realizar Consulta - solo para citas Pendientes
 			btnRealizarConsulta.setEnabled(estado.equals("Pendiente"));
 
-			// Botón Cancelar Cita - solo para citas Pendientes
+			// BotÃ³n Cancelar Cita - solo para citas Pendientes
 			btnCancelarCita.setEnabled(estado.equals("Pendiente"));
 
-			// Cambiar texto del botón Cancelar según estado
+			// Cambiar texto del botÃ³n Cancelar segÃºn estado
 			if (estado.equals("Cancelada")) {
 				btnCancelarCita.setText("Cita Cancelada");
 				btnCancelarCita.setEnabled(false);
@@ -310,7 +310,7 @@ public class ListaCitas extends JDialog {
 
 	private void realizarConsulta() {
 		if (citaSeleccionada == null) {
-			JOptionPane.showMessageDialog(this, "Seleccione una cita válida", "Advertencia",
+			JOptionPane.showMessageDialog(this, "Seleccione una cita vÃ¡lida", "Advertencia",
 					JOptionPane.WARNING_MESSAGE);
 			return;
 		}
@@ -331,7 +331,7 @@ public class ListaCitas extends JDialog {
 		// Verificar que el doctor logeado sea el asignado a la cita
 		if (!citaSeleccionada.getDoctor().getNumeroLicencia().equals(doctorLogeado.getNumeroLicencia())) {
 			JOptionPane.showMessageDialog(this,
-					"No puede realizar esta consulta.\n" + "Esta cita está asignada a otro doctor.", "No autorizado",
+					"No puede realizar esta consulta.\n" + "Esta cita estÃ¡ asignada a otro doctor.", "No autorizado",
 					JOptionPane.ERROR_MESSAGE);
 			return;
 		}
@@ -340,7 +340,7 @@ public class ListaCitas extends JDialog {
 		if (citaSeleccionada.getFechaCita().isAfter(LocalDate.now())) {
 			int respuesta = JOptionPane.showConfirmDialog(this,
 					"La cita seleccionada es para una fecha futura (" + citaSeleccionada.getFechaCita() + ").\n"
-							+ "¿Desea realizar la consulta de todas formas?",
+							+ "Â¿Desea realizar la consulta de todas formas?",
 					"Cita Futura", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
 			if (respuesta != JOptionPane.YES_OPTION) {
@@ -353,7 +353,7 @@ public class ListaCitas extends JDialog {
 		dialog.setLocationRelativeTo(this);
 		dialog.setVisible(true);
 
-		// Recargar citas después de cerrar la consulta
+		// Recargar citas despuÃ©s de cerrar la consulta
 		cargarCitas();
 		limpiarSeleccion();
 	}
@@ -364,26 +364,26 @@ public class ListaCitas extends JDialog {
 			return;
 		}
 
-		// Verificar que la cita esté pendiente
+		// Verificar que la cita estÃ© pendiente
 		if (!citaSeleccionada.estaPendiente()) {
 			JOptionPane.showMessageDialog(this,
-					"No se puede cancelar una cita que ya está " + citaSeleccionada.getEstadoCita().toLowerCase(),
+					"No se puede cancelar una cita que ya estÃ¡ " + citaSeleccionada.getEstadoCita().toLowerCase(),
 					"Error", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 
 		int confirmacion = JOptionPane.showConfirmDialog(this,
-				"¿Está seguro de cancelar esta cita?\n\n" + "Código: " + citaSeleccionada.getCodigoCita() + "\n"
+				"Â¿EstÃ¡ seguro de cancelar esta cita?\n\n" + "CÃ³digo: " + citaSeleccionada.getCodigoCita() + "\n"
 						+ "Paciente: " + citaSeleccionada.getPaciente().getNombre() + " "
 						+ citaSeleccionada.getPaciente().getApellido() + "\n" + "Fecha: "
 						+ citaSeleccionada.getFechaCita() + "\n" + "Hora: " + citaSeleccionada.getHoraCita(),
-				"Confirmar Cancelación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+				"Confirmar CancelaciÃ³n", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 
 		if (confirmacion == JOptionPane.YES_OPTION) {
 			boolean cancelada = Clinica.getInstance().cancelarCita(citaSeleccionada.getCodigoCita());
 
 			if (cancelada) {
-				JOptionPane.showMessageDialog(this, "Cita cancelada exitosamente", "Éxito",
+				JOptionPane.showMessageDialog(this, "Cita cancelada exitosamente", "Ã‰xito",
 						JOptionPane.INFORMATION_MESSAGE);
 				cargarCitas();
 				limpiarSeleccion();

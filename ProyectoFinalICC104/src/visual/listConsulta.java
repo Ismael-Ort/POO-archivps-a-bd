@@ -26,7 +26,7 @@ public class listConsulta extends JDialog {
 	public listConsulta() {
 		getContentPane().setBackground(new Color(250, 240, 230));
 		setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(listConsulta.class.getResource("/com/sun/java/swing/plaf/windows/icons/DetailsView.gif")));
+				.getImage(listConsulta.class.getResource("/recursos/doc.jpg")));
 		setTitle("Listado de consultas");
 		setBounds(100, 100, 1000, 550);
 		setLocationRelativeTo(null);
@@ -109,7 +109,7 @@ public class listConsulta extends JDialog {
 
 			String fecha = (c.getFechaConsulta() != null) ? c.getFechaConsulta().toString() : "";
 			String diagnostico = (c.getDiagnostico() != null) ? c.getDiagnostico() : "";
-			String vigilancia = c.isEsEnfermedadVigilancia() ? "SÍ" : "No";
+			String vigilancia = c.isEsEnfermedadVigilancia() ? "Si" : "No";
 
 			Object[] fila = { c.getCodigoConsulta(), nombrePaciente, nombreDoctor, fecha, diagnostico, vigilancia };
 

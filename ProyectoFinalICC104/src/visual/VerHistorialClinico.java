@@ -56,7 +56,7 @@ public class VerHistorialClinico extends JDialog {
 
 	public VerHistorialClinico() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(VerHistorialClinico.class.getResource("/recursos/adm.jpg")));
-		setTitle("Historial Clínico");
+		setTitle("Historial ClÃ­nico");
 		setBounds(100, 100, 1000, 700);
 		setLocationRelativeTo(null);
 		setModal(true);
@@ -81,7 +81,7 @@ public class VerHistorialClinico extends JDialog {
 		panelBusqueda.setLayout(null);
 		contentPanel.add(panelBusqueda);
 
-		JLabel lblBuscar = new JLabel("Cédula:");
+		JLabel lblBuscar = new JLabel("CÃ©dula:");
 		lblBuscar.setBackground(new Color(255, 239, 213));
 		lblBuscar.setBounds(52, 30, 120, 22);
 		panelBusqueda.add(lblBuscar);
@@ -108,7 +108,7 @@ public class VerHistorialClinico extends JDialog {
 		JPanel panelInfo = new JPanel();
 		panelInfo.setBackground(new Color(240, 255, 255));
 		panelInfo.setBorder(
-				new TitledBorder(null, "Información del Paciente", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+				new TitledBorder(null, "InformaciÃ³n del Paciente", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panelInfo.setBounds(10, 102, 964, 150);
 		panelInfo.setLayout(null);
 		contentPanel.add(panelInfo);
@@ -122,7 +122,7 @@ public class VerHistorialClinico extends JDialog {
 		lblNombrePaciente.setBounds(100, 25, 400, 22);
 		panelInfo.add(lblNombrePaciente);
 
-		JLabel lblCedulaLbl = new JLabel("Cédula:");
+		JLabel lblCedulaLbl = new JLabel("CÃ©dula:");
 		lblCedulaLbl.setBounds(520, 25, 80, 22);
 		panelInfo.add(lblCedulaLbl);
 
@@ -180,7 +180,7 @@ public class VerHistorialClinico extends JDialog {
 		tabConsultas.setLayout(new BorderLayout(0, 0));
 		tabbedPane.addTab("Consultas", null, tabConsultas, null);
 
-		String[] columnasConsultas = { "Código", "Fecha", "Doctor", "Diagnóstico", "En Resumen", "Vigilancia" };
+		String[] columnasConsultas = { "CÃ³digo", "Fecha", "Doctor", "DiagnÃ³stico", "En Resumen", "Vigilancia" };
 		modeloConsultas = new DefaultTableModel(columnasConsultas, 0) {
 			public boolean isCellEditable(int row, int column) {
 				return false;
@@ -214,7 +214,7 @@ public class VerHistorialClinico extends JDialog {
 	private void crearTabResumen(JTabbedPane tabbedPane) {
 		JPanel tabResumen = new JPanel();
 		tabResumen.setLayout(new BorderLayout(0, 0));
-		tabbedPane.addTab("Resumen Automático", null, tabResumen, null);
+		tabbedPane.addTab("Resumen AutomÃ¡tico", null, tabResumen, null);
 
 		txtResumen = new JTextArea();
 		txtResumen.setEditable(false);
@@ -237,7 +237,7 @@ public class VerHistorialClinico extends JDialog {
 	private void crearTabVacunacion(JTabbedPane tabbedPane) {
 		JPanel tabVacunacion = new JPanel();
 		tabVacunacion.setLayout(null);
-		tabbedPane.addTab("Vacunación", null, tabVacunacion, null);
+		tabbedPane.addTab("VacunaciÃ³n", null, tabVacunacion, null);
 
 		// Vacunas Aplicadas
 		JLabel lblVacunasAplicadas = new JLabel("Vacunas Aplicadas:");
@@ -245,7 +245,7 @@ public class VerHistorialClinico extends JDialog {
 		lblVacunasAplicadas.setBounds(10, 10, 200, 22);
 		tabVacunacion.add(lblVacunasAplicadas);
 
-		String[] columnasAplicadas = { "Vacuna", "Fecha Aplicación", "Lote" };
+		String[] columnasAplicadas = { "Vacuna", "Fecha AplicaciÃ³n", "Lote" };
 		modeloVacunasAplicadas = new DefaultTableModel(columnasAplicadas, 0) {
 			public boolean isCellEditable(int row, int column) {
 				return false;
@@ -263,7 +263,7 @@ public class VerHistorialClinico extends JDialog {
 		lblVacunasFaltantes.setBounds(10, 160, 200, 22);
 		tabVacunacion.add(lblVacunasFaltantes);
 
-		String[] columnasFaltantes = { "Código", "Nombre", "Enfermedad" };
+		String[] columnasFaltantes = { "CÃ³digo", "Nombre", "Enfermedad" };
 		modeloVacunasFaltantes = new DefaultTableModel(columnasFaltantes, 0) {
 			public boolean isCellEditable(int row, int column) {
 				return false;
@@ -292,14 +292,14 @@ public class VerHistorialClinico extends JDialog {
 		String busqueda = txtBusqueda.getText().trim();
 
 		if (busqueda.isEmpty() || busqueda.contains("_")) {
-			JOptionPane.showMessageDialog(this, "Ingrese una cédula completa", "Advertencia",
+			JOptionPane.showMessageDialog(this, "Ingrese una cÃ©dula completa", "Advertencia",
 					JOptionPane.WARNING_MESSAGE);
 			return;
 		}
 
 		String cedulaLimpia = busqueda.replaceAll("[^0-9]", "");
 		if (cedulaLimpia.length() != 11) {
-			JOptionPane.showMessageDialog(this, "La cédula debe tener 11 dígitos", "Cédula inválida",
+			JOptionPane.showMessageDialog(this, "La cÃ©dula debe tener 11 dÃ­gitos", "CÃ©dula invÃ¡lida",
 					JOptionPane.ERROR_MESSAGE);
 			return;
 		}
@@ -343,7 +343,7 @@ public class VerHistorialClinico extends JDialog {
 		}
 	}
 
-	// Modifica el método cargarConsultas() para filtrar según el doctor logeado
+	// Modifica el mÃ©todo cargarConsultas() para filtrar segÃºn el doctor logeado
 	private void cargarConsultas() {
 		modeloConsultas.setRowCount(0);
 		if (pacienteActual == null)
@@ -354,10 +354,10 @@ public class VerHistorialClinico extends JDialog {
 		boolean esAdmin = Control.esAdministrador();
 
 		for (Consulta c : consultas) {
-			// LÓGICA DE VISIBILIDAD:
+			// LÃ“GICA DE VISIBILIDAD:
 			// 1. Admin ve TODO
 			// 2. Doctor ve: consultas propias O consultas con enfermedad bajo vigilancia
-			// 3. Si no es doctor ni admin, no ve nada (no debería pasar)
+			// 3. Si no es doctor ni admin, no ve nada (no deberÃ­a pasar)
 
 			boolean puedeVer = false;
 
@@ -365,7 +365,7 @@ public class VerHistorialClinico extends JDialog {
 				puedeVer = true; // Admin ve todo
 			} else if (doctorLogeado != null) {
 				// Doctor ve si:
-				// a) Es SU consulta (la hizo él)
+				// a) Es SU consulta (la hizo Ã©l)
 				// b) Es consulta de enfermedad bajo vigilancia
 				boolean esSuConsulta = c.getDoctor().getNumeroLicencia().equals(doctorLogeado.getNumeroLicencia());
 				boolean esVigilancia = c.isEsEnfermedadVigilancia();
@@ -375,7 +375,7 @@ public class VerHistorialClinico extends JDialog {
 			if (puedeVer) {
 				Object[] fila = { c.getCodigoConsulta(), c.getFechaConsulta().toString(),
 						c.getDoctor().getNombre() + " " + c.getDoctor().getApellido(), c.getDiagnostico(),
-						c.isIncluidaEnResumen() ? "Sí" : "No", c.isEsEnfermedadVigilancia() ? "Sí" : "No" };
+						c.isIncluidaEnResumen() ? "SÃ­" : "No", c.isEsEnfermedadVigilancia() ? "SÃ­" : "No" };
 				modeloConsultas.addRow(fila);
 			}
 		}
@@ -384,8 +384,8 @@ public class VerHistorialClinico extends JDialog {
 		if (modeloConsultas.getRowCount() == 0 && !esAdmin && doctorLogeado != null) {
 			JOptionPane.showMessageDialog(this,
 					"No hay consultas registradas\n"
-							+ "Solo puede ver consultas que usted realizó o de enfermedades bajo vigilancia.",
-					"Información", JOptionPane.INFORMATION_MESSAGE);
+							+ "Solo puede ver consultas que usted realizÃ³ o de enfermedades bajo vigilancia.",
+					"InformaciÃ³n", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 
@@ -450,7 +450,7 @@ public class VerHistorialClinico extends JDialog {
 
 		String codigoConsulta = (String) modeloConsultas.getValueAt(filaSeleccionada, 0);
 		if (Clinica.getInstance().marcarConsultaParaResumen(codigoConsulta)) {
-			JOptionPane.showMessageDialog(this, "Consulta marcada para resumen", "Éxito",
+			JOptionPane.showMessageDialog(this, "Consulta marcada para resumen", "Ã‰xito",
 					JOptionPane.INFORMATION_MESSAGE);
 			cargarConsultas();
 		} else {
@@ -467,7 +467,7 @@ public class VerHistorialClinico extends JDialog {
 
 		String codigoConsulta = (String) modeloConsultas.getValueAt(filaSeleccionada, 0);
 		if (Clinica.getInstance().desmarcarConsultaDeResumen(codigoConsulta)) {
-			JOptionPane.showMessageDialog(this, "Consulta desmarcada del resumen", "Éxito",
+			JOptionPane.showMessageDialog(this, "Consulta desmarcada del resumen", "Ã‰xito",
 					JOptionPane.INFORMATION_MESSAGE);
 			cargarConsultas();
 		} else {
