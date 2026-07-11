@@ -27,3 +27,4 @@ target/
 # Database credentials / local config
 .env
 config/db.properties
+ProyectoFinalICC104/config/db.properties
