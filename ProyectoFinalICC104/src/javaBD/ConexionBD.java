@@ -17,7 +17,7 @@ public class ConexionBD {
         Properties propiedades = new Properties();
 
         // Se abre y se carga el archivo db.properties
-        FileInputStream archivo = new FileInputStream("ProyectoFinalICC104/config/db.properties");
+        FileInputStream archivo = new FileInputStream("ProyectoFinalICC104/config/dbclinica.properties");
         propiedades.load(archivo);
         archivo.close();
 

@@ -28,3 +28,5 @@ target/
 .env
 config/db.properties
 ProyectoFinalICC104/config/db.properties
+config/dbclinica.properties
+ProyectoFinalICC104/config/dbclinica.properties
