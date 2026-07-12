@@ -52,7 +52,6 @@ El objetivo principal de esta conversión es migrar la persistencia de datos des
 
 Esto significa que el sistema debe dejar de depender de archivos como:
 
-```text
 control.dat
 clinica.dat y comenzar a guardar, buscar, actualizar y eliminar información usando tablas de base de datos.
 
