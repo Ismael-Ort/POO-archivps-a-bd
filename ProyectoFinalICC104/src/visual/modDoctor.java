@@ -1,40 +1,21 @@
 package visual;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JPanel;
+import logico.Clinica;
+import logico.Doctor;
+
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.JRadioButton;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerDateModel;
-import javax.swing.SpinnerNumberModel;
-import java.util.Date;
-import java.util.Calendar;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
+import javax.swing.text.MaskFormatter;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
-import java.awt.event.ActionEvent;
-import javax.swing.JCheckBox;
-import javax.swing.JFormattedTextField;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.text.MaskFormatter;
-import logico.Clinica;
-import logico.Doctor;
-import javax.swing.ButtonGroup;
-import javax.swing.SpinnerListModel;
-import java.awt.Toolkit;
-import java.awt.Color;
+import java.util.Calendar;
+import java.util.Date;
 
 public class modDoctor extends JDialog {
 
@@ -199,9 +180,9 @@ public class modDoctor extends JDialog {
 		contentPanel.add(lblEspecialidad);
 
 		cbxEspecialidad = new JComboBox<String>();
-		cbxEspecialidad.setModel(new DefaultComboBoxModel<>(new String[] { "<Seleccione>", "Cardiología", "Pediatría",
-				"Dermatología", "Neurología", "Ginecología", "Medicina General", "Traumatología", "Oftalmología",
-				"Otorrinolaringología", "Psiquiatría", "Urología", "Endocrinología" }));
+		cbxEspecialidad.setModel(new DefaultComboBoxModel<>(new String[] { "<Seleccione>", "Cardiologia", "Pediatria",
+				"Dermatologia", "Neurologia", "Ginecologia", "Medicina General", "Traumatologia", "Oftalmologia",
+				"Otorrinolaringologia", "Psiquiatria", "Urologia", "Endocrinologia" }));
 		cbxEspecialidad.setBounds(15, 268, 280, 26);
 		contentPanel.add(cbxEspecialidad);
 
@@ -496,7 +477,7 @@ public class modDoctor extends JDialog {
 			doctorAModificar.setHorarioFin(horarioFin);
 			doctorAModificar.setActivo(chckbxActivo.isSelected());
 
-			// ========== 7. GUARDAR CAMBIOS ==========
+// ========== 7. GUARDAR CAMBIOS ==========
 			if (Clinica.getInstance().modificarDoctor(doctorAModificar)) {
 				JOptionPane.showMessageDialog(this,
 						"Doctor modificado exitosamente\n\n" + "Código: " + doctorAModificar.getCodigoDoctor() + "\n"
@@ -505,7 +486,14 @@ public class modDoctor extends JDialog {
 						"Modificación Exitosa", JOptionPane.INFORMATION_MESSAGE);
 				dispose();
 			} else {
-				JOptionPane.showMessageDialog(this, "Error al modificar el doctor", "Error", JOptionPane.ERROR_MESSAGE);
+				// CAMBIO AQUÍ: Muestra los detalles de lo que está fallando
+				JOptionPane.showMessageDialog(this,
+						"Error al modificar el doctor en la Base de Datos.\n\n"
+								+ "Posibles causas:\n"
+								+ "1. El código (" + doctorAModificar.getCodigoDoctor() + ") no existe en la BD.\n"
+								+ "2. El teléfono ya pertenece a otro registro o viola una regla UNIQUE.\n"
+								+ "3. Revisa la consola de tu IDE (Eclipse/NetBeans) para ver la excepción de SQL.",
+						"Error al Guardar", JOptionPane.ERROR_MESSAGE);
 			}
 
 		} catch (Exception ex) {

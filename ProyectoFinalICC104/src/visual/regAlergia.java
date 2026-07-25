@@ -1,164 +1,187 @@
 package visual;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import javaBD.AlergiaBD;
 import logico.Alergia;
-import logico.Clinica;
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.DefaultComboBoxModel;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Toolkit;
-import java.awt.Color;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
 
 public class regAlergia extends JDialog {
 
-	private final JPanel contentPanel = new JPanel();
+	private final JPanel contentPanel =
+			new JPanel();
+
 	private JTextField txtNombre;
 	private JComboBox<String> cbxTipo;
 
-	public static void main(String[] args) {
-		try {
-			regAlergia dialog = new regAlergia();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
 	public regAlergia() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(regAlergia.class.getResource("/recursos/enfc.jpg")));
-		setTitle("Registro de Alergia");
-		setModal(true);
-		setBounds(100, 100, 400, 250);
-		setLocationRelativeTo(null);
-		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBackground(new Color(255, 235, 205));
-		contentPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		contentPanel.setLayout(null);
 
-		// ========== ALÉRGENO ==========
-		JLabel lblAlergeno = new JLabel("Alérgeno:");
-		lblAlergeno.setBounds(15, 15, 100, 20);
-		contentPanel.add(lblAlergeno);
+		setTitle("Registrar Nueva Alergia");
+		setModal(true);
+		setBounds(100, 100, 420, 240);
+		setLocationRelativeTo(null);
+
+		getContentPane().setLayout(
+				new BorderLayout()
+		);
+
+		contentPanel.setBorder(
+				new EmptyBorder(15, 15, 15, 15)
+		);
+
+		contentPanel.setLayout(null);
+		getContentPane().add(
+				contentPanel,
+				BorderLayout.CENTER
+		);
+
+		JLabel lblNombre =
+				new JLabel("Nombre:");
+
+		lblNombre.setBounds(
+				20, 25, 100, 25
+		);
+
+		contentPanel.add(lblNombre);
 
 		txtNombre = new JTextField();
-		txtNombre.setBounds(15, 38, 340, 26);
+		txtNombre.setBounds(
+				120, 25, 245, 25
+		);
 		contentPanel.add(txtNombre);
-		txtNombre.setColumns(10);
 
-		JLabel lblInfo = new JLabel("(Ejemplo: Polen, Penicilina, Maní, etc.)");
-		lblInfo.setBounds(15, 67, 300, 20);
-		contentPanel.add(lblInfo);
+		JLabel lblTipo =
+				new JLabel("Tipo:");
 
-		// ========== TIPO ==========
-		JLabel lblTipo = new JLabel("Tipo de alergia:");
-		lblTipo.setBounds(15, 100, 150, 20);
+		lblTipo.setBounds(
+				20, 70, 100, 25
+		);
+
 		contentPanel.add(lblTipo);
 
-		cbxTipo = new JComboBox<String>();
-		cbxTipo.setModel(new DefaultComboBoxModel<String>(new String[] { 
-			"<Seleccione>", 
-			"Alimento", 
-			"Medicamento", 
-			"Ambiental", 
-			"Animal", 
-			"Contacto" 
-		}));
-		cbxTipo.setBounds(15, 123, 340, 26);
+		cbxTipo = new JComboBox<>(
+				new String[]{
+						"<Seleccione>",
+						"Alimento",
+						"Medicamento",
+						"Ambiental",
+						"Animal",
+						"Contacto"
+				}
+		);
+
+		cbxTipo.setBounds(
+				120, 70, 245, 25
+		);
+
 		contentPanel.add(cbxTipo);
 
-		// ========== PANEL DE BOTONES ==========
-		JPanel buttonPane = new JPanel();
-		buttonPane.setBackground(new Color(240, 248, 255));
-		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-		getContentPane().add(buttonPane, BorderLayout.SOUTH);
+		JPanel buttonPane =
+				new JPanel(
+						new FlowLayout(
+								FlowLayout.RIGHT
+						)
+				);
 
-		JButton btnRegistrar = new JButton("Registrar");
-		btnRegistrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				registrarAlergia();
-			}
-		});
-		btnRegistrar.setActionCommand("OK");
+		getContentPane().add(
+				buttonPane,
+				BorderLayout.SOUTH
+		);
+
+		JButton btnRegistrar =
+				new JButton("Registrar");
+
+		btnRegistrar.addActionListener(
+				e -> registrarAlergia()
+		);
+
 		buttonPane.add(btnRegistrar);
-		getRootPane().setDefaultButton(btnRegistrar);
 
-		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
-		});
-		btnCancelar.setActionCommand("Cancel");
+		JButton btnCancelar =
+				new JButton("Cancelar");
+
+		btnCancelar.addActionListener(
+				e -> dispose()
+		);
+
 		buttonPane.add(btnCancelar);
-	}
 
-	private boolean validarNombre(String texto) {
-		// Solo letras, espacios y tildes
-		if (!texto.matches("[a-záéíóúñüA-ZÁÉÍÓÚÑÜ ]+")) {
-			JOptionPane.showMessageDialog(this,
-					"El alérgeno solo puede contener letras y espacios.\nNo se permiten números ni caracteres especiales.",
-					"Nombre inválido", JOptionPane.ERROR_MESSAGE);
-			return false;
-		}
-		return true;
+		getRootPane().setDefaultButton(
+				btnRegistrar
+		);
 	}
 
 	private void registrarAlergia() {
-		// Validar campos vacíos
-		if (txtNombre.getText().trim().isEmpty() || cbxTipo.getSelectedIndex() == 0) {
-			JOptionPane.showMessageDialog(this, 
-				"Complete todos los campos:\n\n• Alérgeno\n• Tipo de alergia",
-				"Campos incompletos", 
-				JOptionPane.WARNING_MESSAGE);
+
+		String nombre =
+				txtNombre.getText().trim();
+
+		String tipo =
+				cbxTipo.getSelectedItem()
+						.toString();
+
+		if (nombre.isEmpty()
+				|| cbxTipo.getSelectedIndex() == 0) {
+
+			JOptionPane.showMessageDialog(
+					this,
+					"Complete el nombre y seleccione el tipo.",
+					"Campos incompletos",
+					JOptionPane.WARNING_MESSAGE
+			);
+
 			return;
 		}
 
-		// Validar nombre
-		if (!validarNombre(txtNombre.getText().trim())) {
-			txtNombre.requestFocus();
+		Alergia nuevaAlergia =
+				new Alergia(nombre, tipo);
+
+		/*
+		 * =============================================================
+		 * IMPLEMENTACIÓN ANTERIOR MEDIANTE ARCHIVOS / ARRAYLIST
+		 * =============================================================
+		 *
+		 * Clinica.getInstance()
+		 *         .registrarAlergias(nuevaAlergia);
+		 *
+		 * PersistenciaManager.guardarDatos();
+		 *
+		 * Este bloque queda documentado, pero no se ejecuta durante
+		 * la migración del módulo a MySQL.
+		 */
+
+		/*
+		 * =============================================================
+		 * NUEVA IMPLEMENTACIÓN MEDIANTE BASE DE DATOS
+		 * =============================================================
+		 */
+		boolean registrada =
+				AlergiaBD.registrarAlergia(
+						nuevaAlergia
+				);
+
+		if (!registrada) {
+
+			JOptionPane.showMessageDialog(
+					this,
+					"No se pudo registrar la alergia.\n"
+							+ "Revise que el nombre no esté repetido "
+							+ "y que el tipo sea válido.",
+					"Registro no realizado",
+					JOptionPane.ERROR_MESSAGE
+			);
+
 			return;
 		}
 
-		String nombreAlergia = txtNombre.getText().trim();
+		JOptionPane.showMessageDialog(
+				this,
+				"Alergia registrada correctamente.",
+				"Registro exitoso",
+				JOptionPane.INFORMATION_MESSAGE
+		);
 
-		// Validar duplicado
-		if (!Clinica.getInstance().validarExistenciaAlergia(nombreAlergia)) {
-			JOptionPane.showMessageDialog(this,
-				"Esta alergia ya está registrada en el sistema.\n" + 
-				"Alérgeno: " + nombreAlergia,
-				"Alergia duplicada", 
-				JOptionPane.ERROR_MESSAGE);
-			return;
-		}
-
-		// Registrar
-		Alergia nuevaAlergia = new Alergia(nombreAlergia, cbxTipo.getSelectedItem().toString());
-		Clinica.getInstance().registrarAlergias(nuevaAlergia);
-
-		JOptionPane.showMessageDialog(this,
-			"Alergia registrada exitosamente\n\n" +
-			"Alérgeno: " + nombreAlergia + "\n" +
-			"Tipo: " + cbxTipo.getSelectedItem().toString(),
-			"Registro Exitoso", 
-			JOptionPane.INFORMATION_MESSAGE);
-
-		limpiarCampos();
 		dispose();
-	}
-
-	private void limpiarCampos() {
-		txtNombre.setText("");
-		cbxTipo.setSelectedIndex(0);
 	}
 }

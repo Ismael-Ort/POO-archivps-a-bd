@@ -1,15 +1,8 @@
 package logico;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.ObjectStreamException;
-import java.io.PrintWriter;
-import java.io.Serializable;
+import javaBD.DoctorBD;
+
+import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -187,6 +180,15 @@ public class Clinica implements Serializable {
 	}
 
 	public boolean modificarDoctor(Doctor doctorActualizado) {
+		if (doctorActualizado == null) return false;
+
+		// Directamente ejecuta la actualización en la Base de Datos y retorna el resultado
+		return DoctorBD.actualizarDoctor(doctorActualizado);
+	}
+
+	/*
+
+	public boolean modificarDoctor(Doctor doctorActualizado) {
 		if (doctorActualizado == null) {
 			return false;
 		}
@@ -211,6 +213,8 @@ public class Clinica implements Serializable {
 
 		return false;
 	}
+
+	 */
 
 	public ArrayList<Doctor> listarDoctores() {
 		return doctores;

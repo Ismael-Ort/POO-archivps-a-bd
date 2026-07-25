@@ -1,5 +1,8 @@
 package logico;
 
+import javaBD.DoctorBD;
+import javaBD.UsuarioBD;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -252,4 +255,62 @@ public class Control implements Serializable {
 	public void setMisUsers(ArrayList<User> misUsers) {
 		this.misUsers = misUsers;
 	}
+
+
+
+	/** Inicia la sesión lógica del sistema utilizando el usuario autenticado desde la base de datos. */
+	public static boolean iniciarSesionBD(UsuarioBD usuarioBD) {
+		loginUser = null;
+		doctorLogeado = null;
+
+		if (usuarioBD == null) { return false; }
+
+		String tipoUsuario = usuarioBD.getTipo();
+
+		if ("Administrador".equalsIgnoreCase(tipoUsuario)) {
+			loginUser = new User("Administrador", usuarioBD.getUsername(), "");
+			doctorLogeado = null;
+			return true;
+		}
+
+		if ("Doctor".equalsIgnoreCase(tipoUsuario)) {
+			Integer idDoctorBD = usuarioBD.getId_doctor();
+
+			if (idDoctorBD == null) {
+				System.err.println("El usuario es de tipo Doctor, pero no tiene un doctor asociado en la base de datos.");
+				return false;
+			}
+
+			Doctor doctorEncontrado = DoctorBD.buscarDoctor(idDoctorBD);
+
+			if (doctorEncontrado == null) {
+				System.err.println("No se encontró el doctor asociado al usuario: " + usuarioBD.getUsername());
+				return false;
+			}
+
+			doctorEncontrado.setUsuario(usuarioBD.getUsername());
+			loginUser = new User("Doctor", usuarioBD.getUsername(), "");
+			doctorLogeado = doctorEncontrado;
+
+			System.out.println("Sesión iniciada: " + usuarioBD.getUsername() + " - Doctor: " + doctorEncontrado.getNombre() + " " + doctorEncontrado.getApellido());
+			return true;
+		}
+
+		System.err.println("Tipo de usuario no reconocido: " + tipoUsuario);
+		return false;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+

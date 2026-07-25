@@ -1,34 +1,23 @@
 package visual;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-
-import logico.Clinica;
+import Server.Servidor;
+import javaBD.UsuarioBD;
 import logico.Control;
 import logico.PersistenciaManager;
-import Server.Servidor;
 
-import java.awt.Color;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import javax.swing.Timer;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class Principal extends JFrame {
 
 	private JPanel contentPane;
 	private Timer autoGuardado;
+
+
+	private String usuarioLogeado;
 
 	public static void main(String[] args) {
 		// Iniciar servidor en thread separado
@@ -40,7 +29,7 @@ public class Principal extends JFrame {
 
 		EventQueue.invokeLater(() -> {
 			try {
-				Principal frame = new Principal();
+				Principal frame = new Principal("admin");
 				frame.setVisible(true);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -48,7 +37,8 @@ public class Principal extends JFrame {
 		});
 	}
 
-	public Principal() {
+	public Principal(String usuario) {
+		this.usuarioLogeado = usuario;
 		setIconImage(Toolkit.getDefaultToolkit()
 				.getImage(Principal.class.getResource("/recursos/adm.jpg")));
 
@@ -87,10 +77,21 @@ public class Principal extends JFrame {
 
 		JMenuItem mntmRegPac = new JMenuItem("Registrar");
 		mntmRegPac.addActionListener(e -> {
+
 			regPaciente dialog = new regPaciente(null);
 			dialog.setModal(true);
 			dialog.setVisible(true);
-			guardarDatosDespuesDeAccion();
+
+			/*
+			 * =============================================================
+			 * IMPLEMENTACIÓN ANTERIOR MEDIANTE ARCHIVOS .DAT
+			 * =============================================================
+			 *
+			 * guardarDatosDespuesDeAccion();
+			 *
+			 * Ya no se ejecuta en el módulo de pacientes porque
+			 * regPaciente guarda directamente en la base de datos MySQL.
+			 */
 		});
 		mnPacientes.add(mntmRegPac);
 
@@ -256,7 +257,7 @@ public class Principal extends JFrame {
 		// ===== CONFIGURAR VISIBILIDAD SEGÚN USUARIO =====
 		// Después de crear todos los menús y sus items, llamar:
 		configurarMenusSegunUsuario(mnDoctores, mnAdministracion, mnPacientes, mnEnfermedades, mnVacunas, mnCitas,
-				mnConsultas);
+				mnConsultas, usuario);
 
 		// Panel de fondo
 		contentPane = new PanelFondo();
@@ -288,41 +289,45 @@ public class Principal extends JFrame {
 	}
 
 	private void configurarMenusSegunUsuario(JMenu mnDoctores, JMenu mnAdministracion, JMenu mnPacientes,
-			JMenu mnEnfermedades, JMenu mnVacunas, JMenu mnCitas, JMenu mnConsultas) {
+	                                         JMenu mnEnfermedades, JMenu mnVacunas, JMenu mnCitas, JMenu mnConsultas, String username) {
 
-		if (Control.getLoginUser() != null) {
-			if (Control.esAdministrador()) {
+		String rol = UsuarioBD.tipoUsuario(username);
+
+		if (rol != null) {
+			if (rol.equalsIgnoreCase("ADMINISTRADOR") || rol.equalsIgnoreCase("ADMIN")) {
 				// ADMINISTRADOR: Solo ve Doctores y Administración
 				mnDoctores.setVisible(true);
 				mnAdministracion.setVisible(true);
 
-				// Ocultar menús que el admin NO debe ver
+				// Ocultar menús de Doctor
 				mnPacientes.setVisible(false);
 				mnEnfermedades.setVisible(false);
 				mnVacunas.setVisible(false);
 				mnCitas.setVisible(false);
 				mnConsultas.setVisible(false);
 
-				System.out.println("Usuario ADMINISTRADOR logeado");
+				System.out.println("Usuario ADMINISTRADOR logeado: " + username);
 
-			} else if (Control.esDoctor()) {
-				// DOCTOR: Solo ve lo necesario para su trabajo
+			} else if (rol.equalsIgnoreCase("DOCTOR")) {
+				// DOCTOR: Ve lo clínico
 				mnPacientes.setVisible(true);
 				mnEnfermedades.setVisible(true);
 				mnVacunas.setVisible(true);
 				mnCitas.setVisible(true);
 				mnConsultas.setVisible(true);
 
-				// Ocultar menús de administración
+				// Ocultar menús de Admin
 				mnDoctores.setVisible(false);
 				mnAdministracion.setVisible(false);
 
-				System.out.println("Usuario DOCTOR logeado");
+				System.out.println("Usuario DOCTOR logeado: " + username);
 
 			} else {
 				JOptionPane.showMessageDialog(this, "Tipo de usuario no reconocido", "Error",
 						JOptionPane.ERROR_MESSAGE);
 			}
+		} else {
+			System.err.println("No se encontró el rol para el usuario: " + username);
 		}
 	}
 
@@ -398,4 +403,5 @@ public class Principal extends JFrame {
 			System.err.println("Error en respaldo: " + e.getMessage());
 		}
 	}
+
 }

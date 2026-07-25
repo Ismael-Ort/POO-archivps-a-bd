@@ -1,9 +1,12 @@
 package visual;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Toolkit;
+import logico.*;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.text.MaskFormatter;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
@@ -11,34 +14,6 @@ import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
-
-import javax.swing.ButtonGroup;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JDialog;
-import javax.swing.JFormattedTextField;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
-import javax.swing.JSpinner;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.SpinnerDateModel;
-import javax.swing.SpinnerListModel;
-import javax.swing.SpinnerNumberModel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-import javax.swing.text.MaskFormatter;
-
-import logico.Clinica;
-import logico.Control;
-import logico.Doctor;
-import logico.User;
-import logico.PersistenciaManager;
 
 public class regDoctor extends JDialog {
 
@@ -79,6 +54,7 @@ public class regDoctor extends JDialog {
 
 	private void inicializarComponentes() {
 
+
 		JLabel lblCodigo = new JLabel("Código:");
 		lblCodigo.setBounds(540, 15, 60, 20);
 		contentPanel.add(lblCodigo);
@@ -88,7 +64,9 @@ public class regDoctor extends JDialog {
 		txtCodigo.setEditable(false);
 		txtCodigo.setBounds(540, 38, 100, 26);
 		txtCodigo.setColumns(10);
-		txtCodigo.setText("DOC-" + Clinica.getInstance().getContadorDoctores());
+		// AGREGADO: Cargar el código formateado desde la Base de Datos
+		txtCodigo.setText(javaBD.DoctorBD.generarCodigoDoctor());
+		// txtCodigo.setText("DOC-" + Clinica.getInstance().getContadorDoctores());
 		contentPanel.add(txtCodigo);
 
 		JLabel lblNombre = new JLabel("Nombre:");
@@ -209,9 +187,9 @@ public class regDoctor extends JDialog {
 		contentPanel.add(lblEspecialidad);
 
 		cbxEspecialidad = new JComboBox<String>();
-		cbxEspecialidad.setModel(new DefaultComboBoxModel<>(new String[] { "<Seleccione>", "Cardiología", "Pediatría",
-				"Dermatología", "Neurología", "Ginecología", "Medicina General", "Traumatología", "Oftalmología",
-				"Otorrinolaringología", "Psiquiatría", "Urología", "Endocrinología" }));
+		cbxEspecialidad.setModel(new DefaultComboBoxModel<>(new String[] { "<Seleccione>", "Cardiologia", "Pediatria",
+				"Dermatologia", "Neurologia", "Ginecologia", "Medicina General", "Traumatologia", "Oftalmologia",
+				"Otorrinolaringologia", "Psiquiatria", "Urologia", "Endocrinologia" }));
 		cbxEspecialidad.setBounds(15, 268, 280, 26);
 		contentPanel.add(cbxEspecialidad);
 
@@ -403,6 +381,8 @@ public class regDoctor extends JDialog {
 			return;
 		}
 
+		/*manejo de archivos
+
 		if (Clinica.getInstance().isCedulaRegistrada(cedulaLimpia)) {
 			JOptionPane.showMessageDialog(this,
 					"Esta cédula ya está registrada en el sistema.\n" + "Cédula: " + txtCedula.getText(),
@@ -444,6 +424,10 @@ public class regDoctor extends JDialog {
 			txtUsuario.requestFocus();
 			return;
 		}
+		 */
+
+		String licenciaCompleta = txtNumeroLicencia.getText().trim().toUpperCase();
+		String usuario = txtUsuario.getText().trim();
 
 		String contrasena = txtContrasena.getText().trim();
 		if (contrasena.length() < 4) {
@@ -484,6 +468,9 @@ public class regDoctor extends JDialog {
 					telefonoLimpio, txtDireccion.getText().trim(), fechaNac, sexo, txtCodigo.getText(), especialidad,
 					licenciaCompleta, citasPorDia, horarioInicio, horarioFin, activo, usuario, contrasena);
 
+
+			/*
+
 			User usuarioDoctor = new User("Doctor", usuario, contrasena);
 
 			boolean doctorRegistrado = Clinica.getInstance().registrarDoctor(nuevoDoctor);
@@ -520,6 +507,42 @@ public class regDoctor extends JDialog {
 			Clinica.getInstance().recalcularContadorDoctores();
 		}
 	}
+			 */
+
+			boolean registradoExitosamente = javaBD.DoctorBD.registrarDoctor(nuevoDoctor);
+
+			if (registradoExitosamente) {
+				JOptionPane.showMessageDialog(this,
+						"DOCTOR REGISTRADO EXITOSAMENTE EN BASE DE DATOS\n\n" + "Código: " + txtCodigo.getText() + "\n" + "Nombre: "
+								+ nuevoDoctor.getNombre() + " " + nuevoDoctor.getApellido() + "\n" + "Especialidad: "
+								+ especialidad + "\n" + "Licencia: " + licenciaCompleta + "\n" + "Horario: "
+								+ horarioInicioStr + " - " + horarioFinStr + "\n" + "Citas por día: " + citasPorDia
+								+ "\n" + "Usuario: " + usuario + "\n" + "Contraseña: ******",
+						"REGISTRO EXITOSO", JOptionPane.INFORMATION_MESSAGE);
+
+				limpiarCampos();
+			} else {
+				JOptionPane.showMessageDialog(this,
+						"No se pudo registrar el doctor en la Base de Datos.\n\n"
+								+ "Posibles causas:\n"
+								+ "• La Cédula, Teléfono, Licencia o Usuario ya existen en la BD.\n"
+								+ "• Error de conexión con el servidor MySQL.",
+						"Error de Registro BD", JOptionPane.ERROR_MESSAGE);
+
+				/* ANTES:
+				 * Clinica.getInstance().recalcularContadorDoctores();
+				 */
+
+
+
+			}
+
+		} catch (Exception ex) {
+			JOptionPane.showMessageDialog(this, "Error inesperado al registrar doctor:\n" + ex.getMessage(), "Error",
+					JOptionPane.ERROR_MESSAGE);
+		}
+	}
+
 
 	private void limpiarCampos() {
 		txtNombre.setText("");
@@ -530,7 +553,9 @@ public class regDoctor extends JDialog {
 		txtNumeroLicencia.setText("");
 		spnHorarioInicio.setValue("08:00");
 		spnHorarioFin.setValue("17:00");
-		txtCodigo.setText("DOC-" + Clinica.getInstance().getContadorDoctores());
+		// AGREGADO: Actualizar al siguiente código disponible en BD
+		txtCodigo.setText(javaBD.DoctorBD.generarCodigoDoctor());
+		// txtCodigo.setText("DOC-" + Clinica.getInstance().getContadorDoctores());
 		rdbtnHombre.setSelected(true);
 		chckbxActivo.setSelected(true);
 		cbxEspecialidad.setSelectedIndex(0);

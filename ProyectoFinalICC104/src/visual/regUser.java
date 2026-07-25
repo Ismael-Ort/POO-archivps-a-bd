@@ -1,25 +1,13 @@
 package visual;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javaBD.UsuarioBD;
 
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
-
-import logico.Control;
-import logico.User;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class regUser extends JDialog {
 
@@ -163,6 +151,30 @@ public class regUser extends JDialog {
 			return;
 		}
 
+		// 2. Validar longitud mínima de contraseña
+		if (pass.length() < 4) {
+			JOptionPane.showMessageDialog(this, "La contraseña debe tener al menos 4 caracteres.",
+					"Contraseña muy corta", JOptionPane.WARNING_MESSAGE);
+			return;
+		}
+
+		boolean registrarUser = UsuarioBD.registrar(user, pass, "Administrador");
+		if (registrarUser) {
+			JOptionPane.showMessageDialog(this,
+					"Usuario administrador registrado exitosamente en la BD.",
+					"Registro exitoso",
+					JOptionPane.INFORMATION_MESSAGE);
+			dispose(); // Cierra la ventana actual
+		} else {
+			JOptionPane.showMessageDialog(this,
+					"No se pudo registrar el usuario.\n" + "El nombre de usuario ya existe o hubo un error en la BD.",
+					"Error de registro",
+					JOptionPane.ERROR_MESSAGE);
+		}
+
+
+		/*
+
 		// Validar si el usuario ya existe
 		if (Control.getInstance().existeUsuario(user)) {
 			JOptionPane.showMessageDialog(this,
@@ -195,6 +207,9 @@ public class regUser extends JDialog {
 					"No se pudo registrar el usuario.\n" + "El nombre de usuario ya existe.", "Error de registro",
 					JOptionPane.ERROR_MESSAGE);
 		}
+
+		*/
+
 	}
 
 	private void limpiarCampos() {

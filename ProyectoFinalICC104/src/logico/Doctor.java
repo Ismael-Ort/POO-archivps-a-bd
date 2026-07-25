@@ -15,6 +15,7 @@ public class Doctor extends Persona {
 	private String usuario;
 	private String contrasena;
 
+
 	public Doctor(String cedula, String nombre, String apellido, String telefono, String direccion,
 			LocalDate fechaNacimiento, char sexo, String codigoDoctor, String especialidad, String numeroLicencia,
 			int citasPorDia, LocalTime horarioInicio, LocalTime horarioFin, boolean activo, String usuario, String contrasena) {
@@ -28,6 +29,11 @@ public class Doctor extends Persona {
 		this.activo = activo;
 		this.setUsuario(usuario);
 		this.setContrasena(contrasena);
+	}
+
+	// Constructor vacío agregado para crear objetos Doctor desde los datos obtenidos en MySQL y asignar sus atributos mediante los setters.
+	public Doctor() {
+		super();
 	}
 
 	public String getEspecialidad() {
@@ -100,4 +106,11 @@ public class Doctor extends Persona {
 		this.contrasena = contrasena;
 	}
 
+	public void setCodigoDoctor(String codigoDoctor) {
+		this.codigoDoctor = codigoDoctor;
+	}
+
+	public void setNumeroLicencia(String numeroLicencia) {
+		this.numeroLicencia = numeroLicencia;
+	}
 }

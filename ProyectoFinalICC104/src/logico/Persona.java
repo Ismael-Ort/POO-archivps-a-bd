@@ -29,6 +29,16 @@ public abstract class Persona implements Serializable {
 		this.sexo = sexo;
 	}
 
+	// Constructor vacío agregado para permitir que las clases hijas, como Doctor y Paciente, puedan crearse desde datos obtenidos de MySQL y completar sus atributos mediante setters.
+	public Persona() {
+		super(); // Este super() llama a Object, que siempre existe
+	}
+
+	// Setter agregado para asignar la cédula al reconstruir objetos desde la base de datos.
+	public void setCedula(String cedula) {
+		this.cedula = cedula;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}
